@@ -14,15 +14,6 @@ getStates = ->
 
     }
 
-    {
-      state: 'modal.maturity-levels'
-      config:
-        url: '/maturity-levels'
-        views:
-          "modal":
-            templateUrl: 'app/overlays/maturity-levels.html'
-
-    }
 
     {
       state: 'modal.country-details'
@@ -34,6 +25,7 @@ getStates = ->
             controller: 'CountryDetails'
 
     }
+
 
     {
       state: 'modal.contact'

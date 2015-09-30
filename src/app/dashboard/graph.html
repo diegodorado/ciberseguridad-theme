@@ -42,11 +42,11 @@
     </h3>
     <div class="factors fade" ng-slide-down="expandedDimension(dimension)">
       <div ng-repeat="factor in dimension.factors" class="factor">
-        <h4>{{factor.title}}</h4>
+        <h4 ui-sref="modal.maturity-levels.factor({dimension_id:dimension.id, factor_id:factor.id})">{{factor.title}}</h4>
         <div class="indicators">
           <div ng-repeat="indicator in factor.indicators" class="indicator">
-            <h5>{{indicator.title}}</h5>
-            <div ng-repeat="country in shownCountries()" class="country-ml" ng-class="'ml-'+(country.maturity_levels[indicator.id])">
+            <h5 ui-sref="modal.maturity-levels.factor.indicator({dimension_id:dimension.id, factor_id:factor.id,indicator_id:indicator.id})">{{indicator.title}}</h5>
+            <div ng-repeat="country in shownCountries()" ui-sref="modal.maturity-levels.factor.indicator({dimension_id:dimension.id, factor_id:factor.id,indicator_id:indicator.id, maturity_level:country.maturity_levels[indicator.id]})" class="country-ml" ng-class="'ml-'+(country.maturity_levels[indicator.id])">
               <i></i><i></i><i></i><i></i><i></i>
             </div>
             <div class="country-ml ghost" ng-show="showGhostCountry()">

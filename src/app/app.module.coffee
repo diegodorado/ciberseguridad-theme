@@ -4,4 +4,5 @@ angular.module 'app', [
     'app.map'
     'app.layout'
     'app.overlays'
+    'app.maturity-levels'
 ]

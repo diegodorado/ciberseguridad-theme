@@ -1,0 +1,6 @@
+<h3>{{dimension.title}}</h3>
+<h4 class="factor-name">{{factor.title}}</h4>
+<h5>{{indicator.title}}</h5>
+<div class="indicator" ng-repeat="indicator in factor.indicators">
+  <h5 ui-sref="modal.maturity-levels.factor.indicator({dimension_id:dimension.id, factor_id:factor.id,indicator_id:indicator.id})">{{indicator.title}}</h5>
+</div>

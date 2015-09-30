@@ -1,4 +1,14 @@
 {
+    "maturity-level-1-title": "",
+    "maturity-level-2-title": "",
+    "maturity-level-3-title": "",
+    "maturity-level-4-title": "",
+    "maturity-level-5-title": "",
+    "maturity-level-1-text": "",
+    "maturity-level-2-text": "",
+    "maturity-level-3-text": "",
+    "maturity-level-4-text": "",
+    "maturity-level-5-text": "",
     "este.sitio.permite.conocer.el": "Este sitio permite conocer el",
     "grado.de.madurez": "grado de madurez",
     "de.cada.pais.en.terminos.de.ciberseguridad": "de cada país en términos de ciberseguridad.",
@@ -28,5 +38,9 @@
     "contacto": "CONTACT",
     "copyright": "© Copyright {{year}}",
     "english": "english",
-    "espanol": "español"
+    "espanol": "español",
+    "maturity-level": "",
+    "maturity-level-brief": "",
+    "{{'maturity-level-'+i+'-title'}}": "",
+    "{{'maturity-level-'+i+'-text'}}": ""
 }

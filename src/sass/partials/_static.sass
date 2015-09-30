@@ -1,0 +1,58 @@
+section.static
+  background: $white
+  +container($small 2)
+  .left, .right
+    padding: 30px
+  +breakpoint($medium)
+    +container($medium 4)
+  +breakpoint($large)
+    +container($large 9)
+    padding: 40px 0
+    .left, .right
+      padding: 0px
+    .left
+      float: left
+      width: 44%
+      margin-left: 50px
+    .right
+      float: right
+      width: 38%
+      margin-right: 50px
+  +breakpoint($wide)
+    +container($wide 9)
+    padding: 90px 0 40px
+    .left
+      width: 46%
+      margin-left: 70px
+    .right
+      margin-right: 70px
+
+  img
+    width: 100%
+
+  h3
+    margin: 0
+    font-size: 30px
+    line-height: 30px
+    padding: 6px 0
+    font-weight: normal
+    color: $black
+  p
+    margin: 0
+    font-size: 18px
+    line-height: 26px
+    padding: 0
+    color: $black
+    &.lead
+      color: $grey_dark
+      font-size: 20px
+      line-height: 30px
+      padding: 5px 0 30px
+
+  h4
+    color: $black
+    padding: 20px 0px 8px
+    font-size: 20px
+    line-height: 30px
+    margin: 0
+    font-weight: bold

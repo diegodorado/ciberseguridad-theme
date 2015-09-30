@@ -1,50 +1,101 @@
 .overlay.maturity-levels
-
-  .container
+  section.general
     +container($large)
     .left
       +span(58%)
     .right
       +span(36% last)
 
-  h3, h4
-    color: $grey_dark
-    font-weight: normal
-    letter-spacing: 1.3px
-    padding: 0
+    h3, h4
+      color: $grey_dark
+      font-weight: normal
+      letter-spacing: 1.3px
+      padding: 0
 
-  h3
-    font-size: 22px
-    margin: 0px 0 30px 0
+    h3
+      font-size: 22px
+      margin: 0px 0 30px 0
 
-  .left h4
-    font-size: 18px
-    margin: 0px 0 10px 0
-    text-transform: uppercase
-
-  .right
-    padding-top: 4px
-    h4
-      color: $grey_mid
-      font-size: 15px
-      margin: 0px 0 13px 0
+    .left h4
+      font-size: 18px
+      margin: 0px 0 10px 0
       text-transform: uppercase
 
-  .country-ml
-    margin-right: 53px
-    padding-bottom: 24px
-    border-bottom: 1px solid $grey_light
-    margin-bottom: 25px
-    i
-      background: $grey_light
+    .right
+      padding-top: 4px
+      h4
+        color: $grey_mid
+        font-size: 15px
+        margin: 0px 0 13px 0
+        text-transform: uppercase
 
-  @for $j from 1 through 5
-    .ml-#{$j} i:nth-child(-n+#{$j})
-      background: $grey_mid
+    .country-ml
+      margin-right: 53px
+      padding-bottom: 24px
+      border-bottom: 1px solid $grey_light
+      margin-bottom: 25px
+      i
+        background: $grey_light
 
-  p
-    color: $grey_dark
-    letter-spacing: 1px
-    font-size: 18px
-    margin: 0 0 30px 0
-    line-height: 30px
+    @for $j from 1 through 5
+      .ml-#{$j} i:nth-child(-n+#{$j})
+        background: $grey_mid
+
+    p
+      color: $grey_dark
+      letter-spacing: 1px
+      font-size: 18px
+      margin: 0 0 30px 0
+      line-height: 30px
+
+
+
+
+
+  section.factor, section.indicator
+
+    h3
+      font-size: 23px
+      font-weight: normal
+      margin: 0
+    h4.factor-name
+      font-size: 20px
+      color: $black
+      margin: 27px 0 0
+    h5
+      margin: 4px 0 28px
+      font-size: 20px
+      font-weight: normal
+    .indicator
+      +container
+      border-bottom: 1px solid $grey_light
+      padding-bottom: 26px
+      margin-bottom: 31px
+      &:last-child
+        border-bottom: none
+        margin-bottom: 0
+        padding-bottom: 0
+
+      .right
+        margin-top: 24px
+      +breakpoint($medium)
+        .left
+          float: left
+          width: 115px
+        .right
+          margin-top: 0
+          padding-left: 160px
+      h4
+        font-size: 18px
+        font-weight: normal
+        margin: 0 0 10px
+        text-transform: uppercase
+        letter-spacing: 0.2px
+      p
+        line-height: 25px
+        color: $black
+        margin: 0
+        font-size: 18px
+      &.active
+        p
+          color: inherit
