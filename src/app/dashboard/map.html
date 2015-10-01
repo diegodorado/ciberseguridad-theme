@@ -1,7 +1,33 @@
-<datamap
-  map="mapObject"
-  on-click="updateActiveGeography"
-  zoomable
-  plugin-data="mapPluginData"
-  >
-</datamap>
+<style>
+
+svg {
+  cursor: pointer;
+}
+
+.land {
+  fill: #D4D5D6;
+
+}
+.selected {
+  fill: #A7A9AB;
+}
+.last_selected{
+  fill: #58585B;
+}
+
+.boundary {
+  fill: none;
+  stroke: #f6f6f6;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+</style>
+
+<div id="map_holder"></div>
