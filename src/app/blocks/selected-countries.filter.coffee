@@ -14,3 +14,7 @@ app.filter 'selectedCountries', ->
       selection.indexOf(a.code) > selection.indexOf(b.code)
 
     return result
+
+app.filter 'nlToArray', ->
+  (text) ->
+    text.split('\n')

@@ -6,16 +6,7 @@
     <h3>{{country.name}}</h3>
 
     <div class="left">
-      <p>
-        Gitamefac mei se, que num prox nocaecu temnon pectus inulis narius. Ed mo
-        disite volo bearcia sus enimus, odi dios minvenis et vendt is alitis
-        a dolumqu istiberum arunt, sapis eosam, ut laccum rectatur sunte
-        voluptat ut pratem. Mil habefactem vo, nem ad ia maio, consupe
-        ssolus escis. Ita, viverei pervideatus.
-      </p>
-      <p>
-        Otam es? Poptea ...
-      </p>
+      <p ng-repeat="paragraph in country.description|nlToArray track by $index">{{paragraph}}</p>
     </div>
     <div class="right">
       <div class="stat">
