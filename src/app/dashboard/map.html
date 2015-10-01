@@ -1,6 +1,7 @@
-<div id="geochart" google-chart ng-style="chartStyle" chart="chart" on-ready="chartOnReady(chartWrapper)" on-select="chartOnSelect(selectedItem)"></div>
-<nav class="zoom">
-  <a ng-click="changeZoom('0')" ng-class="{'current':($stateParams.zone === '0')}" translate>america.central</a>
-  <a ng-click="changeZoom('1')" ng-class="{'current':($stateParams.zone === '1')}" translate>antillas</a>
-  <a ng-click="changeZoom('2')" ng-class="{'current':($stateParams.zone === '2')}" translate>america.del.sur</a>
-</nav>
+<datamap
+  map="mapObject"
+  on-click="updateActiveGeography"
+  zoomable
+  plugin-data="mapPluginData"
+  >
+</datamap>

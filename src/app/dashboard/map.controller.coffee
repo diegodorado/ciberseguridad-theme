@@ -1,5 +1,49 @@
 MapCtrl = ($scope) ->
 
+  $scope.mapPlugins =
+    bubbles: null
+    customLegend: (layer, data, options) ->
+      html = [ '<ul class="list-inline">' ]
+      label = ''
+      for fillKey of @options.fills
+        html.push '<li class="key" ', 'style="border-top: 10px solid ' + @options.fills[fillKey] + '">', fillKey, '</li>'
+      html.push '</ul>'
+      d3.select(@options.element).append('div').attr('class', 'datamaps-legend').html html.join('')
+      return
+  $scope.mapPluginData = bubbles: [ {
+    name: 'Bubble 1'
+    latitude: 21.32
+    longitude: -7.32
+    radius: 45
+    fillKey: 'gt500'
+  } ]
+
+  $scope.mapObject =
+    scope: 'world'
+    responsive: true
+    options:
+      width: 1110
+      legendHeight: 60
+    geographyConfig:
+      highlighBorderColor: '#EAA9A8'
+      highlighBorderWidth: 2
+    fills:
+      'HIGH': '#CC4731'
+      'MEDIUM': '#306596'
+      'LOW': '#667FAF'
+      'defaultFill': '#DDDDDD'
+    data:
+      'AZ': 'fillKey': 'MEDIUM'
+      'CO': 'fillKey': 'HIGH'
+      'DE': 'fillKey': 'LOW'
+      'GA': 'fillKey': 'MEDIUM'
+
+  $scope.updateActiveGeography = (geography) ->
+    console.log geography
+    geography.properties.name = "QWPOIUUE"
+    $scope.stateName = geography.properties.name
+    $scope.stateCode = geography.id
+
   loadChart = ->
     $scope.chart.data = [['region', 'color']]
     for c in $scope.countries

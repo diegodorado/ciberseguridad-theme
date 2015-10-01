@@ -10,4 +10,5 @@ angular.module 'app.core', [
     'ngCookies'
     '720kb.tooltips'
     'ng-slide-down'
+    'datamaps'
 ]
