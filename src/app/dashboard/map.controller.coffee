@@ -103,7 +103,7 @@ MapCtrl = ($scope, $window) ->
 
 
   geodata = []
-  d3.json 'data/countries.json', (error, data) ->
+  d3.json $scope.themeUrl + '/assets/geodata/countries.json', (error, data) ->
     if error
       throw error
 

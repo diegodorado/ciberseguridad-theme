@@ -126,6 +126,14 @@ gulp.task('lang', function() {
     ;
 });
 
+gulp.task('geodata', function() {
+  log('Copying geodata');
+  return gulp
+    .src(config.src + 'geodata/**')
+    .pipe(gulp.dest(config.build + 'assets/geodata'))
+    ;
+});
+
 gulp.task('pages', function() {
   log('Copying pages');
   return gulp
@@ -161,7 +169,7 @@ gulp.task('layout', function() {
 gulp.task('build', gulp.series(
   'clean-build',
   gulp.parallel('pages', 'partials', 'meta', 'layout'),
-  gulp.parallel('lang', 'fonts', 'images'),
+  gulp.parallel('geodata', 'lang', 'fonts', 'images'),
   'wiredep',
   'inject',
   function() {

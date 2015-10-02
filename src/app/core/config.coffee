@@ -1,4 +1,7 @@
-### @ngInject ###
+
+themeUrl = (meta.getAttribute("content") for meta in document.getElementsByTagName('meta') when meta.getAttribute("name") is "themeUrl")[0]
+
+
 configure = ($compileProvider,
   $logProvider,
   routerHelperProvider,
@@ -22,7 +25,6 @@ configure = ($compileProvider,
   exceptionHandlerProvider.configure config.appErrorPrefix
   configureStateHelper()
 
-  themeUrl = (meta.getAttribute("content") for meta in document.getElementsByTagName('meta') when meta.getAttribute("name") is "themeUrl")[0]
 
   $translateProvider
     .useStaticFilesLoader({
@@ -61,6 +63,8 @@ core.run [
     #'contacts.list' or one of its decendents is active.
     $rootScope.$state = $state
     $rootScope.$stateParams = $stateParams
+
+    $rootScope.themeUrl = themeUrl
 
     $translate.use($translate.proposedLanguage())
     $rootScope.locale = $translate.use() or $translate.proposedLanguage()
