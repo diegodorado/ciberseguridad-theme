@@ -54,6 +54,7 @@
     "node": true,
 
     "globals": {
+        "d3": false,
         "angular": false,
         "jQuery": false
     }

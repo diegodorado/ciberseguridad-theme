@@ -51,8 +51,6 @@ section.main
 
     overflow: hidden
     position: relative
-    [ui-view]
-      height: 755px
 
 
   .select-country
@@ -133,11 +131,15 @@ nav.zoom
   top: 79px
   left: 20px
   z-index: 500
+  width: 96px
+  overflow: visible
+
   &.ghost
     .country-name
       color: $grey_light
 
   .country-name
+    width: 200px
     display: block
     margin-bottom: 19px
     letter-spacing: 0.7px
@@ -157,13 +159,6 @@ nav.zoom
       transition-duration: 0.8s
       transition-delay: #{(-1+$i)/10}s
 
-
-#geochart
-  position: absolute
-  path
-    cursor: pointer
-  path[fill="none"]
-    display: none
 
 
 .select
@@ -250,3 +245,27 @@ header.countries
       display: block
       font-size: 12px
       height: 35px
+
+
+
+#map_holder
+  height: 755px
+  svg
+    cursor: pointer
+  .land
+    fill: #D4D5D6
+  .selected
+    fill: #A7A9AB
+  .last_selected
+    fill: #58585B
+  .banned
+    fill: #eee
+  .boundary
+    fill: none
+    stroke: #f6f6f6
+    stroke-linejoin: round
+    stroke-linecap: round
+    vector-effect: non-scaling-stroke
+  .overlay
+    fill: none
+    pointer-events: all

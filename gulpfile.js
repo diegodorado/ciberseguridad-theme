@@ -230,7 +230,7 @@ gulp.task('rsync', gulp.series('optimize', function() {
 
 
 //ogr2ogr -f GeoJSON   -where "ADM0_A3 IN ('GBR', 'IRL')" subunits.json   ne_10m_admin_0_map_subunits.shp
-
+//topojson --id-property ISO_A2 -p code=ISO_A2 -p code -o countries.json --bbox countries=america4.geojson
 
 gulp.task('serve-dev', gulp.series('build', 'cssfix', function() {
   startBrowserSync(true, false);
