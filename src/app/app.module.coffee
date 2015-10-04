@@ -3,6 +3,7 @@ angular.module 'app', [
     'app.dashboard'
     'app.map'
     'app.layout'
+    'app.contact'
     'app.overlays'
     'app.maturity-levels'
 ]

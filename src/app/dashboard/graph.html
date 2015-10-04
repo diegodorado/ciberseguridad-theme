@@ -1,39 +1,59 @@
-<nav>
-  <a ng-hide="showGhostCountry()" class="select" ng-click="toggleNavCountrySelect()">
-    <span translate>seleccionar.un.pais</span>
-    <ul ng-show="navCountrySelectOpened" class="select-country">
-      <li class="select-none" >
-        <span ng-click="deselectAll()" translate>deseleccionar.todos</span>
-      </li>
-      <li ng-repeat="country in countries" ng-class="{'selected':($stateParams.countries.indexOf(country.code) > -1), 'last-selected':($stateParams.last_selected == country.code)}" >
-        <span ng-click="clickCountry(country.code, $event)">{{country.name}}</span>
-      </li>
-    </ul>
-  </a>
-  <a ng-show="showPager()" class="prev" ng-click="prev()"></a>
-  <a ng-show="showPager()" class="next" ng-click="next()"></a>
-</nav>
-<header class="countries">
-  <div ng-repeat="country in shownCountries()" id="country-{{country.code}}" draggable droppable drop="handleDrop" class="country-header" ng-class="{'last-selected':($stateParams.last_selected == country.code)}">
-    <a class="close" ng-click="clickCountry(country.code)"></a>
-    <b class="flag-{{country.code}}"></b>
-    <span class="country-name">{{country.name}}</span>
-    <a  ui-sref="modal.country-details({code: country.code})" class="info-link"></a>
+<div class="pager">
+  <nav>
+    <a ng-hide="showGhostCountry()" class="select" ng-click="toggleNavCountrySelect()" click-out="navCountrySelectClickout()">
+      <span translate>seleccionar.un.pais</span>
+      <ul ng-show="navCountrySelectOpened" class="select-country">
+        <li class="select-none" >
+          <span ng-click="deselectAll($event)" translate>deseleccionar.todos</span>
+        </li>
+        <li ng-repeat="country in countries" ng-class="{'selected':($stateParams.countries.indexOf(country.code) > -1), 'last-selected':($stateParams.last_selected == country.code)}" >
+          <span ng-click="clickCountry(country.code, $event)">{{country.name}}</span>
+        </li>
+      </ul>
+    </a>
+    <a ng-show="showPager()" class="prev" ng-class="{'disabled': prevDisabled() }" ng-click="prev()"></a>
+    <a ng-show="showPager()" class="next" ng-class="{'disabled': nextDisabled() }" ng-click="next()"></a>
+  </nav>
+</div>
+
+<div class="graph-header">
+
+  <div class="shareLinks">
+    <nav>
+      <a class="download" ng-href="{{downloadLink()}}" target="_blank">
+        <i></i>
+        <span translate>descargar.xls</span>
+      </a>
+      <a class="share" ng-click="openSharer()">
+        <i></i>
+        <span translate>compartir</span>
+      </a>
+    </nav>
   </div>
 
-  <div ng-show="showGhostCountry()" class="country-header ghost" ng-click="toggleCountrySelect($event)" id="country-ghost" droppable drop="handleDrop" >
-    <span class="hint" translate>selecciona.un.pais.para.comparar</span>
-    <i></i>
-    <ul ng-show="countrySelectOpened" class="select-country">
-      <li class="select-none" >
-        <span ng-click="deselectAll()" translate>deseleccionar.todos</span>
-      </li>
-      <li ng-repeat="country in countries" ng-class="{'selected':($stateParams.countries.indexOf(country.code) > -1), 'last-selected':($stateParams.last_selected == country.code)}" >
-        <span ng-click="clickCountry(country.code, $event)">{{country.name}}</span>
-      </li>
-    </ul>
-  </div>
-</header>
+  <header class="countries">
+    <div ng-repeat="country in shownCountries()" id="country-{{country.code}}" draggable droppable drop="handleDrop" class="country-header" ng-class="{'last-selected':($stateParams.last_selected == country.code)}">
+      <a class="close" ng-click="clickCountry(country.code)"></a>
+      <b class="flag-{{country.code}}"></b>
+      <span class="country-name">{{country.name}}</span>
+      <a  ui-sref="modal.country-details({code: country.code})" class="info-link"></a>
+    </div>
+
+    <div ng-show="showGhostCountry()" class="country-header ghost" ng-click="toggleCountrySelect($event)" id="country-ghost" droppable drop="handleDrop" click-out="countrySelectClickout()">
+      <span class="hint" translate>selecciona.un.pais.para.comparar</span>
+      <i>
+        <ul ng-show="countrySelectOpened" class="select-country">
+          <li class="select-none" >
+            <span ng-click="deselectAll($event)" translate>deseleccionar.todos</span>
+          </li>
+          <li ng-repeat="country in countries" ng-class="{'selected':($stateParams.countries.indexOf(country.code) > -1), 'last-selected':($stateParams.last_selected == country.code)}" >
+            <span ng-click="clickCountry(country.code, $event)">{{country.name}}</span>
+          </li>
+        </ul>
+      </i>
+    </div>
+  </header>
+</div>
 
 <div class="graph-data">
   <div ng-repeat="dimension in dimensions" class="dimension dim-{{dimension.id}}"  ng-class="{'colapsed':!expandedDimension(dimension)}" >

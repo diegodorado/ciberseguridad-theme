@@ -1,18 +1,42 @@
-Graph = ($scope) ->
+Graph = ($scope, $http) ->
+
+  $scope.downloadLink = ->
+    '/api/excel/' + $scope.$stateParams.countries +
+      '/' + $scope.$stateParams.expanded_dimensions
+
+  $scope.openSharer = ->
+    false
+
+  $scope.nextDisabled = ->
+    $scope.$stateParams.offset >=
+      $scope.countriesSelected() - $scope.countriesPerPage()
+
+  $scope.prevDisabled = ->
+    $scope.$stateParams.offset <= 0
+
 
   $scope.next = ->
-    if $scope.$stateParams.offset < $scope.countriesSelected() - $scope.countriesPerPage()
+    unless $scope.nextDisabled()
       $scope.$stateParams.offset++
       $scope.updateUrl()
 
   $scope.prev = ->
-    if $scope.$stateParams.offset > 0
+    unless $scope.prevDisabled()
       $scope.$stateParams.offset--
       $scope.updateUrl()
 
-  $scope.deselectAll = ->
+  $scope.navCountrySelectClickout = ->
+    if $scope.navCountrySelectOpened
+      $scope.navCountrySelectOpened = false
+
+  $scope.countrySelectClickout = ->
+    if $scope.countrySelectOpened
+      $scope.countrySelectOpened = false
+
+  $scope.deselectAll = ($event)->
     $scope.navCountrySelectOpened = false
     $scope.countrySelectOpened = false
+    $event?.stopPropagation()
     $scope.toggleCountriesOff()
 
   $scope.clickCountry = (code,$event) ->
@@ -72,7 +96,7 @@ Graph = ($scope) ->
 
 Graph.$inject = [
   '$scope'
-  '$rootScope'
+  '$http'
 ]
 
 angular.module('app.dashboard').controller 'Graph', Graph

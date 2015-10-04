@@ -1,6 +1,5 @@
-<div class="overlay contact">
-  <div class="container">
-    <a class="close" ng-click="close()"></a>
+<section class="contact">
+  <div class="box">
     <h3>Contacto</h3>
     <div class="left">
       <div class="organization">
@@ -20,7 +19,6 @@
     </div>
     <div ng-form class="right" name="contactForm">
       <h4>Formulario de Contacto</h4>
-
       <input type="text" placeholder="Nombre" ng-model="data.name" ng-required="true"/>
       <input type="email" placeholder="Email"  ng-model="data.email" ng-required="true"/>
       <textarea placeholder="Consulta"  ng-model="data.query" ng-required="true" ></textarea>

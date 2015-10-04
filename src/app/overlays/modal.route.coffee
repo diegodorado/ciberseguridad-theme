@@ -26,19 +26,6 @@ getStates = ->
 
     }
 
-
-    {
-      state: 'modal.contact'
-      config:
-        url: '/contact'
-        views:
-          "modal":
-            templateUrl: 'app/overlays/contact.html'
-            controller: 'Contact'
-
-    }
-
-
  ]
 
 angular.module('app.overlays').run appRun

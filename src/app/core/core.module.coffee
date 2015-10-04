@@ -7,5 +7,6 @@ angular.module 'app.core', [
     'ui.router'
     'pascalprecht.translate'
     'ngCookies'
+    'clickOut'
     'ng-slide-down'
 ]

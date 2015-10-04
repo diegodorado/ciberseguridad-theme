@@ -12,6 +12,9 @@ Aside = ($scope) ->
     $scope.countrySelectOpened = not $scope.countrySelectOpened
     return
 
+  $scope.countrySelectClickout = ->
+    if $scope.countrySelectOpened
+      $scope.countrySelectOpened = false
 
   return
 

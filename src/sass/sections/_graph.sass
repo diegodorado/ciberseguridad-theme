@@ -2,12 +2,17 @@ section.graph
   background: $white
   +no-select
   padding-bottom: 40px
-
-  nav
+  h3, h4, h5
+    text-overflow: ellipsis
+    white-space: pre
+    overflow: hidden
+  .pager
+    +container
     padding-top: 20px
     height: 27px
-    float: right
-    font-size: 0
+    nav
+      float: right
+      font-size: 0
     a
       display: block
       float: left
@@ -16,22 +21,30 @@ section.graph
       border: 1px solid $grey_light
       &:hover
         background-color: $grey_lighter
+      &.disabled
+        opacity: 0.5
+        &:hover
+          background-color: transparent
     .prev
-      background: image-url("arrow-left.png") no-repeat center center
+      background: inline-image("arrow-left.png") no-repeat center center
     .next
-      background: image-url("arrow-right.png") no-repeat center center
+      background: inline-image("arrow-right.png") no-repeat center center
     .select
       color: $grey_mid
       position: relative
       line-height: 25px
       text-align: center
       font-size: 12px
-      width: auto
+      width: 130px
       margin-right: 5px
-      padding: 0 10px
     .select-country
+      +top-triangle($grey_lighter, 14px, 118px)
+      width: 250px
       top: 40px
-      left: -70px
+      left: - ( 250px - 130px ) / 2
+
+  .graph-header
+    +container
 
   header
     text-align: right
@@ -40,13 +53,8 @@ section.graph
   .factors, .indicators
     padding-top: 5px
 
-
   .dimension
-    padding-top: 10px
-    &:first-child
-      padding-top: 35px
     h3
-      font-size: 24px
       font-weight: normal
       text-align: right
       cursor: pointer
@@ -63,48 +71,25 @@ section.graph
     .factor
       h4
         cursor: pointer
-        text-align: right
-        font-size: 18px
         font-weight: bold
         color: $black
-        line-height: 30px
-        height: 30px
-
-      &:first-child h4
-        margin-top: 5px
-
-      &:last-child
-        padding-bottom: 25px
 
     .indicator
-      margin-bottom: 8px
-      height: 21px
       h5
         cursor: pointer
         font-weight: normal
         text-align: right
-        font-size: 18px
-        line-height: 21px
-        height: 21px
       &::after
         border-bottom: 1px solid $grey_light
-        margin-left: 70px
         padding-top: 4px
       &:last-child::after
         border: none
 
   .country-ml
-    padding: 7px 0
     cursor: pointer
-    i:first-child
-      margin-left: 10px
 
   .select-country
-    width: 250px
-    top: 123px
-    left: -70px
     text-align: left
-    +top-triangle($grey_lighter, 14px, 118px)
     li
       &.select-none span
         margin-bottom: 7px
@@ -113,6 +98,36 @@ section.graph
         padding-left: 32px
         background-position: 6px center
 
+  .shareLinks
+    height: 154px
+    position: relative
+    nav
+      font-size: 0
+      position: absolute
+      bottom: 14px
+      right: 1px
+    a
+      margin-left: 8px
+      display: inline-block
+      &:hover
+        background-color: $grey_lighter
+    span, i
+      vertical-align: middle
+      height: 25px
+      line-height: 25px
+      border: 1px solid $grey_light
+      display: inline-block
+    i
+      width: 40px
+    span
+      font-size: 12px
+      color: $grey_mid
+      padding: 0 21px
+
+    .download i
+      background: inline-image("download.png") no-repeat center center
+    .share i
+      background: inline-image("share.png") no-repeat center center
 
   header.countries
     .country-header
@@ -126,21 +141,31 @@ section.graph
         top: 0
         right: 0
         cursor: pointer
-        +replace-text-with-dimensions("cross.png")
+        +image-data-with-dimensions("cross.png")
       a.info-link
         display: inline-block
         cursor: pointer
-        +replace-text-with-dimensions("info.png")
+        +image-data-with-dimensions("info.png")
     .last-selected
       border-bottom-color: $grey_mid
     .ghost
       cursor: pointer
-      position: relative
       i
         display: inline-block
-        +replace-text-with-dimensions("arrow-down.png")
+        position: relative
+        font-style: normal
+        +image-data-with-dimensions("arrow-down.png")
+      .select-country
+        +top-triangle($grey_lighter, 14px, 118px)
+        width: 250px
+        top: image-height("arrow-down.png") + 14px/2
+        left: -(250px - image-width("arrow-down.png"))/2
+
+
       span.hint
-        padding: 18px 10px 16px
+        padding: 18px 0px 16px
+        width: 90px
+        margin: auto
 
   .graph-data::before
     border-bottom: 1px solid $grey_light
@@ -151,9 +176,104 @@ section.graph
 
 
 section.graph
+  .dimension
+    padding-top: 10px
+    &:first-child
+      padding-top: 23px
+    h3
+      font-size: 21px
+      letter-spacing: 0.4px
+      width: 198px
+      margin: 0
+    .factor
+      h4
+        line-height: 13px
+        font-size: 13px
+        text-align: left
+        margin: 0 0 3px 21px
+        height: 13px
+      &:first-child h4
+        margin-top: 5px
+
+      &:last-child
+        padding-bottom: 17px
+
+    .indicator
+      margin-bottom: 5px
+      height: 21px
+      h5
+        cursor: pointer
+        font-weight: normal
+        text-align: right
+        font-size: 13px
+        line-height: 13px
+        height: 13px
+      &::after
+        margin-left: 19px
+        margin-right: 18px
+  .country-ml
+    padding: 2px 0
+    i
+      width: 15.8px
+
+
+  +breakpoint($small)
+    +container($small 2)
+    .graph-data, .factors, .factor, .indicators, .indicator
+      +container
+      +break
+
+    .dimension
+      h3, h5
+        margin: 0
+        +span(197px)
+
+    .country-ml
+      +span(102px last)
+
+
   +breakpoint($medium)
     +container($medium 5)
-    +show-grid( $medium 5 overlay show )
+    .dimension
+      padding-top: 10px
+      &:first-child
+        padding-top: 35px
+      h3
+        margin: 21px 0
+        width: auto
+        font-size: 24px
+      .factor
+        h4
+          text-align: right
+          font-size: 18px
+          line-height: 30px
+          height: 30px
+          margin: 0
+
+        &:first-child h4
+          margin-top: 5px
+        &:last-child
+          padding-bottom: 25px
+      .indicator
+        margin-bottom: 8px
+        height: 21px
+        h5
+          cursor: pointer
+          font-weight: normal
+          text-align: right
+          font-size: 18px
+          line-height: 21px
+          height: 21px
+
+        &::after
+          margin-left: 70px
+          margin-right: 0
+
+    .country-ml
+      padding: 7px 0
+      i:first-child
+        margin-left: 10px
+
     .graph-data, .factors, .factor, .indicators, .indicator
       +container
       +break
@@ -161,14 +281,13 @@ section.graph
     .dimension
       h3, h4, h5
         margin: 0
-        +span(4 of 5)
+        +span(3 of 4)
 
     .country-ml
-      +span(1 of 5 last)
+      +span(1 of 4 last)
 
   +breakpoint($large)
     +container($large 9)
-    +show-grid( $large 9 overlay show )
 
     .graph-data, .factors, .factor, .indicators, .indicator
       +container
@@ -191,23 +310,14 @@ section.graph
 
   +breakpoint($wide)
     +container($wide 9)
-    +show-grid( $wide 9 overlay show )
-
-    .graph-data, .factors, .factor, .indicators, .indicator
-      +container
-      +break
-
-    .dimension
-      h3, h4, h5
-        margin: 0
-        +span(4 of 9)
-
     .country-ml
-      +span(1 of 9)
-      &:nth-child(6)
-        +span(1 of 9 last)
-
       i
         width: 17px
         &:first-child
           margin-left: 10px
+
+
+
+  .shareLinks
+    +breakpoint($large)
+      +span(4 of 9)

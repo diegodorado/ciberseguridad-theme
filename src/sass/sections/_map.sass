@@ -1,0 +1,29 @@
+
+#map_holder
+  border-left: 1px solid $grey_light
+  border-bottom: 1px solid $grey_light
+  height: 755px
+  svg
+    cursor: pointer
+  .land
+    fill: #D4D5D6
+  .selected
+    fill: #A7A9AB
+  .last_selected
+    fill: #58585B
+  .banned
+    fill: #eee
+  .boundary
+    fill: none
+    stroke: #f6f6f6
+    stroke-linejoin: round
+    stroke-linecap: round
+    vector-effect: non-scaling-stroke
+  .overlay
+    fill: none
+    pointer-events: all
+
+#map_holder
+  display: none
+  +breakpoint($large)
+    display: block

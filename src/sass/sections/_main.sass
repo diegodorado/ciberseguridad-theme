@@ -45,13 +45,8 @@ section.main
 
   .map
     +no-select
-    border-left: 1px solid $grey_light
-    border-bottom: 1px solid $grey_light
     height: 740px
-
-    overflow: hidden
     position: relative
-
 
   .select-country
     width: 100%
@@ -70,21 +65,19 @@ section.main
   +container
 
   +breakpoint($medium)
+    +container($medium 4)
     .aside
-      +span(isolate 1 at 1 of (4 1) (40px 6px))
+      +span(3 of 4)
     .map
-      +span(isolate 1 at 2 of (4 1) (40px 6px))
+      +span(1 of 4 last)
 
   +breakpoint($large)
+    +container($large 9)
     .aside
-      +span(isolate 1 at 1 of (4 5) (40px 6px))
+      +span(4 of 9)
     .map
-      +span(isolate 1 at 2 of (4 5) (40px 6px))
-  +breakpoint($wide)
-    .aside
-      +span(isolate 1 at 1 of (4 5) (40px 6px))
-    .map
-      +span(isolate 1 at 2 of (4 5) (40px 6px))
+      +span(5 of 9 last)
+
 
 
 /* ---singles----- */
@@ -109,23 +102,7 @@ section.main
     border-left: 1px dotted grey
     border-right: 1px dotted grey
 
-nav.zoom
-  position: absolute
-  top: 118px
-  right: 60px
-  z-index: 500
-  a
-    display: block
-    background: $white
-    padding: 0 16px
-    border: 1px solid $grey_light
-    text-align: center
-    font-size: 14px
-    line-height: 31px
-    margin-bottom: 10px
-    color: $grey_light
-    &.current, &:hover
-      color: $black
+
 .eq
   position: absolute
   top: 79px
@@ -210,19 +187,14 @@ nav.zoom
       line-height: 36px
       letter-spacing: 0.3px
 
-
-
 header.countries
   +breakpoint($medium)
-    +container($medium 5)
-    +pre(4 of 5)
-    +break
+    +span(1 of 4 last)
     .country-header
       +span(1 of 1 last)
 
   +breakpoint($large)
-    +container($large 9)
-    +pre(4 of 9)
+    +span(5 of 9 last)
     .country-header
       +span(1 of 5)
       &:nth-child(5)
@@ -245,27 +217,3 @@ header.countries
       display: block
       font-size: 12px
       height: 35px
-
-
-
-#map_holder
-  height: 755px
-  svg
-    cursor: pointer
-  .land
-    fill: #D4D5D6
-  .selected
-    fill: #A7A9AB
-  .last_selected
-    fill: #58585B
-  .banned
-    fill: #eee
-  .boundary
-    fill: none
-    stroke: #f6f6f6
-    stroke-linejoin: round
-    stroke-linecap: round
-    vector-effect: non-scaling-stroke
-  .overlay
-    fill: none
-    pointer-events: all

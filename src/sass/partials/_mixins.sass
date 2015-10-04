@@ -4,6 +4,11 @@
   width: image-width($src)/2
   height: image-height($src)/2
 
+=image-data-with-dimensions($src)
+  background: inline-image($src) center center
+  width: image-width($src)
+  height: image-height($src)
+
 =top-triangle($color, $width, $right)
   &::before
     display: block

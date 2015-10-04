@@ -1,0 +1,34 @@
+
+
+.eq
+  position: absolute
+  top: 79px
+  left: 20px
+  z-index: 500
+  width: 96px
+  overflow: visible
+
+  &.ghost
+    .country-name
+      color: $grey_light
+
+  .country-name
+    width: 200px
+    display: block
+    margin-bottom: 19px
+    letter-spacing: 0.7px
+    text-transform: uppercase
+  .dimension
+    margin-bottom: 14px
+    span
+      display: block
+      margin-bottom: 3px
+  .country-ml
+    margin-top: 2px
+
+
+  @for $i from 1 through 5
+    .country-ml i:nth-child(#{$i})
+      transition-property: background
+      transition-duration: 0.8s
+      transition-delay: #{(-1+$i)/10}s

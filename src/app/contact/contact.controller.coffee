@@ -4,17 +4,17 @@ Contact = ($scope, $stateParams) ->
   $scope.submit = () ->
     #todo: actually send and email
     if $scope.contactForm.$valid
-      $scope.close()
+      console.log $scope.data
 
   $scope.data =
     name: ''
     email: ''
     query: ''
 
-
+  console.log 'contact'
   return
 
-angular.module('app.overlays').controller 'Contact', Contact
+angular.module('app.contact').controller 'Contact', Contact
 Contact.$inject = [
   '$scope'
   '$stateParams'
