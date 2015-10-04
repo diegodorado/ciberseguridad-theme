@@ -1,4 +1,4 @@
-<div class="eq" ng-class="{ghost: last_selected() === null}">
+<div class="eq" ng-class="{ghost: last_selected() == null}">
   <span class="country-name">{{last_selected().name || ('pais' | translate)}}</span>
   <div ng-repeat="dimension in dimensions" class="dimension dim-{{dimension.id}}">
     <span>{{ dimension.title }}</span>

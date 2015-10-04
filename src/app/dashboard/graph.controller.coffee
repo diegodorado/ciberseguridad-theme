@@ -82,14 +82,26 @@ Graph = ($scope, $http) ->
     else
       $scope.$stateParams.expanded_dimensions.indexOf(dimension.id) > -1
 
-  $scope.handleDrop = (codeA, codeB) ->
-    codeA = codeA.replace('country-','')
-    codeB = codeB.replace('country-','')
+  $scope.setLastSelected = (code)->
+    $scope.$stateParams.last_selected = code
+    $scope.updateUrl()
+    $scope.$broadcast 'country-toggled'
+
+  $scope.handleDrop = (codeDragged, codeDropped) ->
     codes = $scope.$stateParams.countries.split('-')
-    codes[codes.indexOf(codeA)] = codeB
-    codes[codes.indexOf(codeB)] = codeA
+    codes.splice codes.indexOf(codeDragged), 1
+    if codeDropped?
+      i = codes.indexOf(codeDropped)
+      tail = codes.splice(i)
+      codes.push codeDragged
+      codes.push c for c in tail
+    else
+      codes.push(codeDragged)
+
+    $scope.$stateParams.last_selected = codeDragged
     $scope.$stateParams.countries = codes.join('-')
     $scope.updateUrl()
+    $scope.$parent.$broadcast 'country-toggled'
 
 
   return

@@ -131,7 +131,6 @@ section.graph
 
   header.countries
     .country-header
-      cursor: move
       padding: 21px 0 10px
       position: relative
       border-bottom: 5px solid transparent
@@ -149,7 +148,6 @@ section.graph
     .last-selected
       border-bottom-color: $grey_mid
     .ghost
-      cursor: pointer
       i
         display: inline-block
         position: relative
@@ -163,7 +161,7 @@ section.graph
 
 
       span.hint
-        padding: 18px 0px 16px
+        padding: 4px 0px 30px
         width: 90px
         margin: auto
 
@@ -325,6 +323,13 @@ section.graph
         width: 14px
         &:first-child
           margin-left: 6px
+
+    header.countries
+      .country-header
+        cursor: move
+      .ghost
+        cursor: pointer
+
 
   +breakpoint($wide)
     +container($wide 9)

@@ -26,14 +26,12 @@ section.main
         padding: 0
         margin: 0
       p
-        margin-top: 5px
         overflow: hidden
       &.empty
         +opacity(0.5)
 
   .map
     +no-select
-    height: 740px
     position: relative
 
   button.select
@@ -66,8 +64,8 @@ section.main
 
 section.main
   +container
-  //background: image-url("b.png")
   .aside
+    padding: 52px 20px 40px
     p
       font-size: 18px
       line-height: 28px
@@ -80,6 +78,7 @@ section.main
       h3
         letter-spacing: normal
       p
+        margin-top: 5px
         height: 56px
         margin-bottom: 30px
       a
@@ -92,9 +91,6 @@ section.main
         &:hover
           background: $grey_light
 
-  .left
-  .aside
-    padding: 52px 20px 40px
   .right
     display: none
 
@@ -116,29 +112,30 @@ section.main
   +breakpoint($medium)
     +container($medium 4)
     .aside
-      p
-        font-size: 20px
-        line-height: 30px
+      padding: 89px 12px 0 35px
       .lead
-        margin-bottom: 46px
+        margin-bottom: 32px
       .info
         margin-top: 49px
-        padding-top: 60px
+        padding-top: 55px
         h3
           letter-spacing: 1.3px
         p
-          height: 56px
-          margin-bottom: 30px
+          margin-top: 7px
+          height: 115px
+          margin-bottom: 0
+        &.empty p
+          font-size: 20px
+          line-height: 32px
         a
-          font-weight: normal
-          display: block
-          background: $grey_lighter
-          height: 55px
-          line-height: 55px
-          text-align: center
+          font-weight: bold
+          display: inline-block
+          background: none
+          text-align: left
           &:hover
-            background: $grey_light
+            background: none
           span::after
+            margin-left: 8px
             content: ">>"
 
     .left
@@ -150,12 +147,12 @@ section.main
       +span(1 of 4 last)
 
     button.select
-      background-position: right 10px center
+      background-position: right 29px center
       span
         letter-spacing: normal
-        font-size: 21px
         padding-left: 30px
       > span
+        font-size: 21px
         height: 60px
         line-height: 60px
 
@@ -164,6 +161,17 @@ section.main
 
   +breakpoint($large)
     +container($large 9)
+    .aside
+      padding: 89px 12px 0 35px
+      p
+        font-size: 20px
+        line-height: 30px
+      .lead
+        margin-bottom: 46px
+      .info
+        margin-top: 49px
+        padding-top: 60px
+
     .left
       +span(4 of 9)
     .aside
@@ -173,16 +181,26 @@ section.main
 
 
 
+
 /* ---singles----- */
 
 
 .drag
-  background: #efefef
+  //background: #efefef
   opacity: 0.5
 
 .over
-  background: #efefef
+  //background: #efefef
   position: relative
+  &::before
+    position: absolute
+    top: 0
+    left: 0
+    display: block
+    content: " "
+    width: 1px
+    height: 9999px
+    border-left: 1px dotted $grey_mid
   &::after
     position: absolute
     top: 134px
@@ -191,70 +209,3 @@ section.main
     content: " "
     width: 99%
     height: 9999px
-    opacity: 0.5
-    border-left: 1px dotted grey
-    border-right: 1px dotted grey
-
-
-
-
-
-.select-country
-  background-color: $grey_lighter
-  position: absolute
-  padding: 0 0 10px
-  list-style: none
-  z-index: 1000
-  margin: 0
-  left: 0
-  li
-    &.select-none
-      span
-        text-transform: none
-        letter-spacing: 1px
-        border-bottom: 1px solid $white
-        line-height: 60px
-    &.selected
-      span
-        background: $grey_light inline-image("check.png") no-repeat 12px center
-    &:hover span, &.selected:hover span
-      background-color: $grey_light
-    span
-      display: block
-      color: $grey_mid
-      text-transform: uppercase
-      padding: 0 38px 0
-      font-size: 15px
-      line-height: 36px
-      letter-spacing: 0.3px
-
-header.countries
-  +breakpoint($medium)
-    +span(1 of 4 last)
-    .country-header
-      +span(1 of 1 last)
-
-  +breakpoint($large)
-    +span(5 of 9 last)
-    .country-header
-      +span(1 of 5)
-      &:nth-child(5)
-        +span(1 of 5 last)
-
-  +no-select
-  .country-header
-    text-align: center
-    b
-      display: inline-block
-    span.country-name
-      display: block
-      text-transform: uppercase
-      margin-top: 3px
-      font-size: 12px
-      height: 35px
-  .ghost
-    span.hint
-      color: $grey_mid
-      display: block
-      font-size: 12px
-      height: 35px

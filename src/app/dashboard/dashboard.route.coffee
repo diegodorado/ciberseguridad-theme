@@ -19,11 +19,9 @@ getStates = ->
     {
       state: 'app.graph'
       config:
-        url: 'graph/zone/:zone/countries/:countries/selected/:last_selected/:offset/dimensions/:expanded_dimensions'
+        url: 'graph/countries/:countries/selected/:last_selected/' +
+          ':offset/dimensions/:expanded_dimensions'
         params:
-          zone:
-            value: '2'
-            squash: false
           countries:
             value: ''
             squash: false
@@ -88,7 +86,8 @@ getStates = ->
         views:
           "content@":
             templateUrl: ($stateParams) ->
-              return '/institutional-information-' + $stateParams.locale + '.html'
+              return '/institutional-information-' +
+                $stateParams.locale + '.html'
         title: 'institutional-information'
     }
 

@@ -21,8 +21,8 @@
     display: inline-block
     width: 17px
     height: 7px
-    border-right: 1px solid $white
     background: $grey_lighter
+    margin-right: 1px
 
 @each $colors in $dimensions_colors
   $i: index($dimensions_colors, $colors)
@@ -32,6 +32,68 @@
       .ml-#{$j} i:nth-child(-n+#{$j})
         background: map-get($colors, dark)
 
+
+
+
+.select-country
+  background-color: $grey_lighter
+  position: absolute
+  padding: 0 0 10px
+  list-style: none
+  z-index: 1000
+  margin: 0
+  left: 0
+  li
+    &.select-none
+      span
+        text-transform: none
+        letter-spacing: 1px
+        border-bottom: 1px solid $white
+        line-height: 60px
+    &.selected
+      span
+        background: $grey_light inline-image("check.png") no-repeat 12px center
+    &:hover span, &.selected:hover span
+      background-color: $grey_light
+    span
+      display: block
+      color: $grey_mid
+      text-transform: uppercase
+      padding: 0 38px 0
+      font-size: 15px
+      line-height: 36px
+      letter-spacing: 0.3px
+
+header.countries
+  +breakpoint($medium)
+    +span(1 of 4 last)
+    .country-header
+      +span(1 of 1 last)
+
+  +breakpoint($large)
+    +span(5 of 9 last)
+    .country-header
+      +span(1 of 5)
+      &:nth-child(5)
+        +span(1 of 5 last)
+
+  +no-select
+  .country-header
+    text-align: center
+    b
+      display: inline-block
+    span.country-name
+      display: block
+      text-transform: uppercase
+      margin-top: 3px
+      font-size: 12px
+      height: 35px
+  .ghost
+    span.hint
+      color: $grey_mid
+      display: block
+      font-size: 12px
+      height: 35px
 
 
 #content

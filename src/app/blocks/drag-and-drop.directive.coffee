@@ -1,31 +1,30 @@
 
 app = angular.module('app.core')
 
-app.directive 'draggable', ->
-  (scope, element) ->
-    # this gives us the native JS object
-    el = element[0]
-    el.draggable = true
-    el.addEventListener 'dragstart', ((e) ->
-      e.dataTransfer.effectAllowed = 'move'
-      e.dataTransfer.setData 'code', @id
-      @classList.add 'drag'
-      false
-    ), false
-    el.addEventListener 'dragend', ((e) ->
-      @classList.remove 'drag'
-      false
-    ), false
-    return
-
-app.directive 'droppable', ->
+app.directive 'dragAndDrop', ->
   {
     scope:
       drop: '&'
+      code: '=code'
 
     link: (scope, element) ->
       # again we need the native object
       el = element[0]
+
+      if scope.code?
+        el.draggable = true
+        el.addEventListener 'dragstart', ((e) ->
+          e.dataTransfer.effectAllowed = 'move'
+          e.dataTransfer.setData 'code', scope.code
+          @classList.add 'drag'
+          false
+        ), false
+        el.addEventListener 'dragend', ((e) ->
+          @classList.remove 'drag'
+          false
+        ), false
+
+
       el.addEventListener 'dragover', ((e) ->
         e.dataTransfer.dropEffect = 'move'
         # allows us to drop
@@ -47,7 +46,7 @@ app.directive 'droppable', ->
         if e.stopPropagation
           e.stopPropagation()
         @classList.remove 'over'
-        binId = @id
+        binId = scope.code
         itemId = e.dataTransfer.getData('code')
         # call the passed drop function
         scope.$apply (scope) ->
