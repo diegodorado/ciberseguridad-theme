@@ -169,7 +169,6 @@ section.graph
 
   .graph-data::before
     border-bottom: 1px solid $grey_light
-    margin-left: 70px
     content: " "
     display: block
     clear: both
@@ -179,7 +178,7 @@ section.graph
   .dimension
     padding-top: 10px
     &:first-child
-      padding-top: 23px
+      padding-top: 40px
     h3
       font-size: 21px
       letter-spacing: 0.4px
@@ -216,6 +215,11 @@ section.graph
     i
       width: 15.8px
 
+  .pager, .graph-header
+    display: none
+
+  .graph-data::before
+    margin: 0 20px
 
   +breakpoint($small)
     +container($small 2)
@@ -234,6 +238,10 @@ section.graph
 
   +breakpoint($medium)
     +container($medium 5)
+
+    .shareLinks
+      +span(3 of 4)
+
     .dimension
       padding-top: 10px
       &:first-child
@@ -286,8 +294,18 @@ section.graph
     .country-ml
       +span(1 of 4 last)
 
+    .pager, .graph-header
+      display: block
+
+    .graph-data::before
+      margin: 0 0 0 70px
+
+
   +breakpoint($large)
     +container($large 9)
+
+    .shareLinks
+      +span(4 of 9)
 
     .graph-data, .factors, .factor, .indicators, .indicator
       +container
@@ -315,9 +333,3 @@ section.graph
         width: 17px
         &:first-child
           margin-left: 10px
-
-
-
-  .shareLinks
-    +breakpoint($large)
-      +span(4 of 9)

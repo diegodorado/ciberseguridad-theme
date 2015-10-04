@@ -16,14 +16,11 @@ section.stats
     .stat-row::before, .stat-row::after
       content: " "
       display: block
-      margin: 0 35px
 
     .stat-row
       line-height: 32px
       font-weight: bold
       font-size: 18px
-      .title
-        text-align: right
       .data
         text-align: right
         letter-spacing: -0.5px
@@ -76,14 +73,41 @@ section.stats
 
 
 section.stats
+
   .stats-inner
+    .stat-row::before, .stat-row::after
+      margin: 0 20px
+    .stat-row
+      .title
+        text-align: center
+
+    +breakpoint($medium)
+      +container($medium)
+      .stat-row
+        +container
+        +break
+        .title
+          +span(3 of 4)
+          text-align: right
+        .data
+          +container
+          .cell
+            +span(1 of 4 last)
+      .chart
+        +container
+        .country-stats
+          +span(1 of 4 last)
+
     +breakpoint($large)
+      .stat-row::before, .stat-row::after
+        margin: 0 35px
       +container($large 9)
       .stat-row
         +container
         +break
         .title
           +span(4 of 9)
+          text-align: right
         .data
           +container
           .cell

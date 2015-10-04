@@ -5,20 +5,18 @@
   <span translate>boreceror.solupta</span>
 </p>
 
-<div class="select">
-  <button click-out="countrySelectClickout()">
-    <span ng-click="toggleCountrySelect()" ng-show="!$stateParams.countries" translate>selecciona.un.pais</span>
-    <span ng-click="toggleCountrySelect()" ng-show="$stateParams.countries" translate>compara.otro.pais</span>
-    <ul ng-show="countrySelectOpened" class="select-country">
-      <li class="select-none" >
-        <span ng-click="deselectAll()" translate>deseleccionar.todos</span>
-      </li>
-      <li ng-repeat="country in countries" ng-class="{'selected':($stateParams.countries.indexOf(country.code) > -1), 'last-selected':($stateParams.last_selected == country.code)}" >
-        <span ng-click="clickCountry(country.code)">{{country.name}}</span>
-      </li>
-    </ul>
-  </button>
-</div>
+<button class="select" click-out="countrySelectClickout()">
+  <span ng-click="toggleCountrySelect()" ng-show="!$stateParams.countries" translate>selecciona.un.pais</span>
+  <span ng-click="toggleCountrySelect()" ng-show="$stateParams.countries" translate>compara.otro.pais</span>
+  <ul ng-show="countrySelectOpened" class="select-country">
+    <li class="select-none" >
+      <span ng-click="deselectAll()" translate>deseleccionar.todos</span>
+    </li>
+    <li ng-repeat="country in countries" ng-class="{'selected':($stateParams.countries.indexOf(country.code) > -1), 'last-selected':($stateParams.last_selected == country.code)}" >
+      <span ng-click="clickCountry(country.code)">{{country.name}}</span>
+    </li>
+  </ul>
+</button>
 
 <div class="info empty" ng-if="!$stateParams.last_selected">
   <h3 translate>pais.seleccionado</h3>
@@ -26,11 +24,12 @@
 </div>
 
 <div class="info" ng-if="$stateParams.last_selected">
-  <h3>{{last_selected().name}}</h3>
   <b class="flag-{{$stateParams.last_selected}}"></b>
+  <h3>{{last_selected().name}}</h3>
   <p>
     {{last_selected().excerpt}}
-    <br/>
-    <a ui-sref="modal.country-details({code: $stateParams.last_selected})" translate>leer.mas</a>
   </p>
+  <a ui-sref="modal.country-details({code: $stateParams.last_selected})">
+    <span translate>leer.mas</span>
+  </a>
 </div>

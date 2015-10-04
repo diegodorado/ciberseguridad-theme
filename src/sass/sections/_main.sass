@@ -1,17 +1,8 @@
 
 section.main
-  background: $white
   .aside
-    padding-top: 90px
-    padding-bottom: 10px
-
-    .lead, .select, .info
-      margin-left: 70px
-
     p
       color: $grey_dark
-      font-size: 20px
-      line-height: 30px
     a
       text-decoration: none
       font-weight: bold
@@ -21,36 +12,48 @@ section.main
 
     .lead
       margin-top: 0
-      margin-bottom: 46px
 
     .info
       background: inline-image("info.png") no-repeat right 2px top 19px
       border-top: 1px solid $grey_light
-      margin-top: 49px
-      padding-top: 60px
+      b[class^="flag"]
+        margin: 0 0 24px
       h3
         color: $grey_dark
         text-transform: uppercase
         font-size: 22px
         font-weight: normal
-        letter-spacing: 1.3px
         padding: 0
         margin: 0
-      b[class^="flag"]
-        margin: 12px 0
       p
-        margin-top: 3px
+        margin-top: 5px
+        overflow: hidden
       &.empty
-        +opacity(0.25)
+        +opacity(0.5)
 
   .map
     +no-select
     height: 740px
     position: relative
 
+  button.select
+    position: relative
+    text-align: left
+    background: inline-image("caret2.png") no-repeat
+    border: none
+    width: 100%
+    padding: 0
+    &:focus
+      outline: 0
+    span
+      display: block
+      color: $grey_dark
+    > span
+      border: 1px solid $grey_light
+
+
   .select-country
     width: 100%
-    top: 59px
     li
       &.select-none span
         padding-bottom: 11px
@@ -63,19 +66,109 @@ section.main
 
 section.main
   +container
+  //background: image-url("b.png")
+  .aside
+    p
+      font-size: 18px
+      line-height: 28px
+    .lead
+      margin-bottom: 23px
+
+    .info
+      margin-top: 40px
+      padding-top: 51px
+      h3
+        letter-spacing: normal
+      p
+        height: 56px
+        margin-bottom: 30px
+      a
+        font-weight: normal
+        display: block
+        background: $grey_lighter
+        height: 55px
+        line-height: 55px
+        text-align: center
+        &:hover
+          background: $grey_light
+
+  .left
+  .aside
+    padding: 52px 20px 40px
+  .right
+    display: none
+
+
+  button.select
+    background-position: right 22px center
+    span
+      font-size: 15px
+      letter-spacing: 0.8px
+      padding-left: 30px
+    > span
+      padding-left: 19px
+      height: 53px
+      line-height: 53px
+
+  .select-country
+    top: 54px
 
   +breakpoint($medium)
     +container($medium 4)
     .aside
+      p
+        font-size: 20px
+        line-height: 30px
+      .lead
+        margin-bottom: 46px
+      .info
+        margin-top: 49px
+        padding-top: 60px
+        h3
+          letter-spacing: 1.3px
+        p
+          height: 56px
+          margin-bottom: 30px
+        a
+          font-weight: normal
+          display: block
+          background: $grey_lighter
+          height: 55px
+          line-height: 55px
+          text-align: center
+          &:hover
+            background: $grey_light
+          span::after
+            content: ">>"
+
+    .left
       +span(3 of 4)
-    .map
+    .right
+      height: 756px
+      display: block
+      position: relative
       +span(1 of 4 last)
+
+    button.select
+      background-position: right 10px center
+      span
+        letter-spacing: normal
+        font-size: 21px
+        padding-left: 30px
+      > span
+        height: 60px
+        line-height: 60px
+
+    .select-country
+      top: 59px
 
   +breakpoint($large)
     +container($large 9)
-    .aside
+    .left
       +span(4 of 9)
-    .map
+    .aside
+      padding: 90px 0 10px 70px
+    .right
       +span(5 of 9 last)
 
 
@@ -103,60 +196,8 @@ section.main
     border-right: 1px dotted grey
 
 
-.eq
-  position: absolute
-  top: 79px
-  left: 20px
-  z-index: 500
-  width: 96px
-  overflow: visible
-
-  &.ghost
-    .country-name
-      color: $grey_light
-
-  .country-name
-    width: 200px
-    display: block
-    margin-bottom: 19px
-    letter-spacing: 0.7px
-    text-transform: uppercase
-  .dimension
-    margin-bottom: 14px
-    span
-      display: block
-      margin-bottom: 3px
-  .country-ml
-    margin-top: 2px
 
 
-  @for $i from 1 through 5
-    .country-ml i:nth-child(#{$i})
-      transition-property: background
-      transition-duration: 0.8s
-      transition-delay: #{(-1+$i)/10}s
-
-
-
-.select
-  button
-    position: relative
-    text-align: left
-    background: inline-image("caret2.png") no-repeat 94% 50%
-    border: 1px solid $grey_light
-    width: 100%
-    padding: 0
-    height: 60px
-    &:focus
-      outline: 0
-    span
-      display: block
-      font-size: 21px
-      padding-left: 30px
-      color: $grey_dark
-    > span
-      height: 60px
-      line-height: 60px
 
 .select-country
   background-color: $grey_lighter
