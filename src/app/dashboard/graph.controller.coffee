@@ -1,11 +1,24 @@
-Graph = ($scope, $http) ->
+Graph = ($scope, $window) ->
 
   $scope.downloadLink = ->
     '/api/excel/' + $scope.$stateParams.countries +
       '/' + $scope.$stateParams.expanded_dimensions
 
-  $scope.openSharer = ->
-    false
+  $scope.shareLink = ->
+    $window.location
+
+  $scope.sharerOpened = false
+  $scope.openSharer = ($event) ->
+    $event.stopPropagation()
+    $scope.sharerOpened = true
+    console.log 'openSharer'
+
+  $scope.closeSharer = ->
+    $scope.sharerOpened = false
+
+  $scope.clickOutSharer = ->
+    console.log 'clickOutSharer'
+    $scope.sharerOpened = false
 
   $scope.nextDisabled = ->
     $scope.$stateParams.offset >=
@@ -108,7 +121,7 @@ Graph = ($scope, $http) ->
 
 Graph.$inject = [
   '$scope'
-  '$http'
+  '$window'
 ]
 
 angular.module('app.dashboard').controller 'Graph', Graph

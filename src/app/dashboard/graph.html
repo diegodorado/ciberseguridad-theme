@@ -24,11 +24,36 @@
         <i></i>
         <span translate>descargar.xls</span>
       </a>
-      <a class="share" ng-click="openSharer()">
+      <a class="share" ng-click="openSharer($event)">
         <i></i>
         <span translate>compartir</span>
       </a>
     </nav>
+    <div id="sharer" ng-show="sharerOpened">
+      <div class="box" click-out="clickOutSharer()">
+        <div class="container">
+          <a class="close" ng-click="closeSharer()"></a>
+          <h3>Compartir</h3>
+          <div class="top">
+            <div class="link">
+              <h4>Vinculo</h4>
+              <input type="text" ng-value="shareLink()"/>
+            </div>
+            <div class="social">
+              <h4>Redes sociales</h4>
+              <a class="twitter">twitter</a>
+              <a class="facebook">facebook</a>
+            </div>
+          </div>
+          <div ng-form class="shareForm" name="shareForm">
+            <h4>Enviar este vinculo a</h4>
+            <input type="email" placeholder="Correo electronico"  ng-model="data.email" ng-required="true"/>
+            <textarea placeholder="Comentario (opcional)"  ng-model="data.query" ng-required="true" ></textarea>
+            <button ng-click="submit()">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <header class="countries">
