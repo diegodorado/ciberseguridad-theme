@@ -53,7 +53,7 @@
     &.selected
       span
         background: $grey_light inline-image("check.png") no-repeat 12px center
-    &:hover span, &.selected:hover span
+    & span:hover, &.selected span:hover
       background-color: $grey_light
     span
       display: block
@@ -63,6 +63,8 @@
       font-size: 15px
       line-height: 36px
       letter-spacing: 0.3px
+
+
 
 header.countries
   +breakpoint($medium)

@@ -1,7 +1,6 @@
 Aside = ($scope) ->
 
   $scope.deselectAll = ->
-    $scope.countrySelectOpened = false
     $scope.toggleCountriesOff()
 
   $scope.clickCountry = (code) ->
