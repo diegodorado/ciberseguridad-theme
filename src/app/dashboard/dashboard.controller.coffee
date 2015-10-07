@@ -1,4 +1,4 @@
-Dashboard = ($scope, $filter) ->
+Dashboard = ($scope, $filter, ngToast) ->
 
   $scope.toggleCountriesOff = ->
     $scope.$stateParams.last_selected = ''
@@ -32,16 +32,19 @@ Dashboard = ($scope, $filter) ->
       0
 
   $scope.toggleCountry = (code) ->
+    country = (c for c in $scope.countries when c.code is code)[0]
     codes = getCodes()
 
     index = codes.indexOf(code)
     if index is -1
       $scope.$stateParams.last_selected = code
       codes.push code
+      ngToast.create country.name + ' fue agregado al cuadro comparativo'
     else
       codes.splice index, 1
       [..., last] = codes
       $scope.$stateParams.last_selected = if last? then last else ''
+      ngToast.create country.name + ' fue quitado del cuadro comparativo'
 
     if codes.length is 0
       $scope.$stateParams.countries = ''
@@ -49,6 +52,10 @@ Dashboard = ($scope, $filter) ->
       $scope.$stateParams.countries = codes.join('-')
 
     $scope.$stateParams.offset = getProperOffset(codes)
+
+
+
+
 
     $scope.updateUrl()
     $scope.$broadcast 'country-toggled'
@@ -94,6 +101,7 @@ Dashboard = ($scope, $filter) ->
 Dashboard.$inject = [
   '$scope'
   '$filter'
+  'ngToast'
 ]
 
 angular.module('app.dashboard').controller 'Dashboard', Dashboard

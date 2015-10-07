@@ -77,6 +77,7 @@ module.exports = function() {
             imgPath: '../images/spritesheet.png',
             retinaImgName: 'spritesheet-2x.png',
             retinaImgPath: '../images/spritesheet-2x.png',
+            padding: 4,
             // Generate SCSS variables/mixins for both spritesheets
             cssName: '_sprites.scss',
             cssVarMap: function (sprite) {

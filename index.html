@@ -31,7 +31,7 @@
 
 </head>
 <body>
-
+    <toast></toast>
     <div id="header">
       <div ui-view="header" class="container"></div>
     </div>
@@ -66,6 +66,7 @@
         <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
         <script src="/bower_components/d3/d3.js"></script>
         <script src="/bower_components/ng-slide-down/dist/ng-slide-down.js"></script>
+        <script src="/bower_components/ngToast/dist/ngToast.js"></script>
         <script src="/bower_components/topojson/topojson.js"></script>
         <!-- endbower -->
         <!-- endbuild -->
@@ -73,21 +74,19 @@
         <!-- build:js ../assets/js/app.js -->
         <!-- inject:js -->
         <script src="/.tmp/app/app.module.js"></script>
-        <script src="/.tmp/app/core/core.module.js"></script>
         <script src="/.tmp/app/contact/contact.module.js"></script>
         <script src="/.tmp/app/dashboard/dashboard.module.js"></script>
+        <script src="/.tmp/app/core/core.module.js"></script>
+        <script src="/.tmp/app/layout/layout.module.js"></script>
         <script src="/.tmp/app/map/map.module.js"></script>
         <script src="/.tmp/app/overlays/overlays.module.js"></script>
         <script src="/.tmp/app/maturity-levels/maturity-levels.module.js"></script>
-        <script src="/.tmp/app/layout/layout.module.js"></script>
         <script src="/.tmp/app/blocks/logger/logger.module.js"></script>
         <script src="/.tmp/app/blocks/exception/exception.module.js"></script>
         <script src="/.tmp/app/blocks/router/router.module.js"></script>
         <script src="/.tmp/templates.js"></script>
         <script src="/.tmp/app/blocks/drag-and-drop.directive.js"></script>
         <script src="/.tmp/app/blocks/selected-countries.filter.js"></script>
-        <script src="/.tmp/app/core/config.js"></script>
-        <script src="/.tmp/app/core/dataservice.js"></script>
         <script src="/.tmp/app/contact/contact.controller.js"></script>
         <script src="/.tmp/app/contact/contact.route.js"></script>
         <script src="/.tmp/app/dashboard/aside.controller.js"></script>
@@ -97,6 +96,10 @@
         <script src="/.tmp/app/dashboard/graph.controller.js"></script>
         <script src="/.tmp/app/dashboard/map.controller.js"></script>
         <script src="/.tmp/app/dashboard/stats.controller.js"></script>
+        <script src="/.tmp/app/core/config.js"></script>
+        <script src="/.tmp/app/core/dataservice.js"></script>
+        <script src="/.tmp/app/layout/footer.controller.js"></script>
+        <script src="/.tmp/app/layout/header.controller.js"></script>
         <script src="/.tmp/app/map/map.controller.js"></script>
         <script src="/.tmp/app/map/map.route.js"></script>
         <script src="/.tmp/app/overlays/country-details.controller.js"></script>
@@ -105,14 +108,13 @@
         <script src="/.tmp/app/maturity-levels/indicator.controller.js"></script>
         <script src="/.tmp/app/maturity-levels/maturity-levels.controller.js"></script>
         <script src="/.tmp/app/maturity-levels/maturity-levels.route.js"></script>
-        <script src="/.tmp/app/layout/footer.controller.js"></script>
-        <script src="/.tmp/app/layout/header.controller.js"></script>
         <script src="/.tmp/app/blocks/logger/logger.js"></script>
         <script src="/.tmp/app/blocks/exception/exception-handler.provider.js"></script>
         <script src="/.tmp/app/blocks/exception/exception.js"></script>
         <script src="/.tmp/app/blocks/router/router-helper.provider.js"></script>
         <!-- endinject -->
         <!-- endbuild -->
+
 
 </body>
 </html>

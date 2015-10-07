@@ -9,4 +9,5 @@ angular.module 'app.core', [
     'ngCookies'
     'clickOut'
     'ng-slide-down'
+    'ngToast'
 ]

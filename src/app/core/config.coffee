@@ -6,7 +6,8 @@ configure = ($compileProvider,
   $logProvider,
   routerHelperProvider,
   exceptionHandlerProvider,
-  $translateProvider
+  $translateProvider,
+  ngToastProvider
   ) ->
 
   configureStateHelper = ->
@@ -37,6 +38,11 @@ configure = ($compileProvider,
     .useMissingTranslationHandlerLog()
     .useSanitizeValueStrategy(null)
 
+  ngToastProvider .configure
+    timeout: 2000
+    maxNumber: 1
+    animation: 'fade'
+
 
 configure.$inject = [
     '$compileProvider'
@@ -44,6 +50,7 @@ configure.$inject = [
     'routerHelperProvider'
     'exceptionHandlerProvider'
     '$translateProvider'
+    'ngToastProvider'
 ]
 
 
