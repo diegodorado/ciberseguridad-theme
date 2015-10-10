@@ -40,6 +40,7 @@ configure = ($compileProvider,
 
   ngToastProvider .configure
     timeout: 2000
+    horizontalPosition: 'center'
     maxNumber: 1
     animation: 'fade'
 
