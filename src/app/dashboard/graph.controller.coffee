@@ -1,23 +1,21 @@
 Graph = ($scope, $window) ->
 
   $scope.downloadLink = ->
-    '/api/excel/' + $scope.$stateParams.countries +
+    '/api/excel/' + $scope.locale +
+      '/' + $scope.$stateParams.countries +
       '/' + $scope.$stateParams.expanded_dimensions
 
-  $scope.shareLink = ->
-    $window.location
 
   $scope.sharerOpened = false
   $scope.openSharer = ($event) ->
+    $scope.shareLink = $window.location
     $event.stopPropagation()
     $scope.sharerOpened = true
-    console.log 'openSharer'
 
   $scope.closeSharer = ->
     $scope.sharerOpened = false
 
   $scope.clickOutSharer = ->
-    console.log 'clickOutSharer'
     $scope.sharerOpened = false
 
   $scope.nextDisabled = ->

@@ -10,4 +10,5 @@ angular.module 'app.core', [
     'clickOut'
     'ng-slide-down'
     'ngToast'
+    '720kb.socialshare'
 ]

@@ -1,13 +1,18 @@
 MapCtrl = ($scope, $window) ->
   d3 = $window.d3
-  topojson = $window.topojson
 
   width = 0
   height = 0
   active = false
   scale0 = 350
   zoomed = false
-  geodata = []
+  projection = null
+  path = null
+  svg = null
+  sea = null
+  g = null
+  zoom = null
+
 
   zoomed = (args) ->
     return unless active
@@ -101,36 +106,36 @@ MapCtrl = ($scope, $window) ->
     g.transition().duration(750).attr('transform', transform)
     return
 
-  projection = d3.geo.mercator()
-  path = d3.geo.path().projection(projection)
-  svg = d3.select('#map_holder').append('svg')
-  sea = svg.append('rect').attr('class', 'overlay')
-  sea.on 'click', sea_clicked
-  g = svg.append('g')
-  zoom = d3.behavior.zoom().on('zoom', zoomed)
 
-  updateSize()
-  #svg.call(zoom)
+  init = ->
 
-  d3.json $scope.themeUrl + '/assets/geodata/countries.json', (error, data) ->
-    if error
-      throw error
+    projection = d3.geo.mercator()
+    path = d3.geo.path().projection(projection)
+    svg = d3.select('#map_holder').append('svg')
+    sea = svg.append('rect').attr('class', 'overlay')
+    sea.on 'click', sea_clicked
+    g = svg.append('g')
+    zoom = d3.behavior.zoom().on('zoom', zoomed)
 
-    geodata = topojson.feature(data, data.objects.countries).features
-    for d in geodata
-      d.id = d.id.toLowerCase()
-      d.banned = (c.code for c in $scope.countries).indexOf(d.id) is -1
+    updateSize()
+    #svg.call(zoom)
 
-    g.append('g').attr('id', 'countries').selectAll('path').data(geodata
-    ).enter().append('path').attr('d', path).on 'click', country_clicked
+    g.append('g').attr('id', 'countries').selectAll('path')
+      .data($scope.geodata)
+      .enter()
+      .append('path')
+      .attr('d', path)
+      .on 'click', country_clicked
 
-    g.append('path').datum(topojson.mesh(data, data.objects.countries, (a, b) ->
-      a != b
-    )).attr('class', 'boundary').attr 'd', path
+    g.append('path').datum($scope.geomesh)
+      .attr('class', 'boundary')
+      .attr 'd', path
 
     updateSelection()
 
     return
+
+  init()
 
   $scope.$on 'country-toggled', (event, args) ->
     updateSelection()

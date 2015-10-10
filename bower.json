@@ -19,6 +19,7 @@
     "angular-animate": "~1.4.3",
     "angular-clickout": "~1.0.2",
     "angular-sanitize": "~1.4.3",
+    "angular-socialshare": "angularjs-socialshare#~0.1.14",
     "angular-translate": "~2.7.2",
     "angular-translate-handler-log": "~2.7.2",
     "angular-translate-loader-static-files": "~2.7.2",

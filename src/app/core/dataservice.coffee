@@ -1,49 +1,71 @@
 ### @ngInject ###
-dataservice = ($http, $rootScope) ->
+dataservice = ($http, $rootScope, $q) ->
+  #topojson = $window.topojson
+
   $rootScope.countries = []
   $rootScope.dimensions = []
+  $rootScope.geodata = []
+  $rootScope.geomesh = null
 
   promises = []
+
   @getData = (locale)->
+
+    if !promises['geo']
+      promises['geo'] = $http.get($rootScope.themeUrl +
+        '/assets/geodata/countries.json')
+
     if !promises[locale]
-      promises[locale] = $http.get('/api/'+locale+'/all').then( (response) ->
-        response.data
+
+      dataP = $http.get('/api/'+locale+'/all')
+
+      promises[locale] = $q.all([dataP, promises['geo']]).then( (response) ->
+        response
       )
 
     return promises[locale]
 
   @prepareData = ->
     locale = $rootScope.locale
-    unless promises[locale]?.$$state?.status is 1
-      @getData(locale).then( (data) ->
-        $rootScope.countries = data.countries
-        $rootScope.dimensions = data.dimensions
-        $rootScope.$broadcast 'data-loaded'
-      )
+    @getData(locale).then( (resp) ->
+      document.documentElement.setAttribute('lang', locale)
+      $rootScope.countries = resp[0].data.countries
+      $rootScope.dimensions = resp[0].data.dimensions
+
+      $rootScope.geodata = topojson
+        .feature(resp[1].data, resp[1].data.objects.countries).features
+      for d in $rootScope.geodata
+        d.id = d.id.toLowerCase()
+        d.banned = (c.code for c in $rootScope.countries).indexOf(d.id) is -1
+
+      $rootScope.geomesh = topojson.mesh(resp[1].data,
+        resp[1].data.objects.countries, (a, b) -> a != b )
+
+
+      $rootScope.$broadcast 'data-loaded'
+    )
 
   $rootScope.$on '$translateChangeStart', (event, eventData) =>
     locale = eventData.language
+    $rootScope.locale =  locale
     if $rootScope.$stateParams.locale
       $rootScope.$stateParams.locale = locale
       #$rootScope.updateUrl()
       $rootScope.$state.go($rootScope.$state.current, $rootScope.$stateParams, {notify: true})
 
-    #if $scope.$stateParams.locale = locale
+    @prepareData()
 
-    @getData(locale).then( (data) ->
-      console.log eventData, data
-      $rootScope.locale = locale
-      document.documentElement.setAttribute('lang', locale)
-      $rootScope.countries = data.countries
-      $rootScope.dimensions = data.dimensions
-      $rootScope.$broadcast 'data-loaded'
-    )
+
+
+  @submitContact = (data)->
+    $http.post('/api/'+$rootScope.locale+'/contact', data)
 
   return @
 
 dataservice.$inject = [
   '$http'
   '$rootScope'
+  '$q'
 ]
 
 
