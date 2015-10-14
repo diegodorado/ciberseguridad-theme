@@ -1,11 +1,10 @@
 <div class="stats-inner">
   <header class="countries">
-    <div ng-repeat="country in shownCountries()" class="country-header" ng-class="{'last-selected':($stateParams.last_selected == country.code)}">
+    <div ng-repeat="country in shownCountries()" class="country-header" ng-class="{'last-selected':($stateParams.last_selected == country.code)}"  code="country.code" drag-and-drop drop="handleDrop">
       <b class="flag-{{country.code}}"></b>
       <span class="country-name">{{country.name}}</span>
     </div>
-    <div ng-show="showGhostCountry()" class="country-header ghost">
-      <span class="hint" translate>pais.seleccionado</span>
+    <div ng-show="showGhostCountry()" class="country-header ghost"  drag-and-drop drop="handleDrop">
     </div>
   </header>
 
@@ -14,9 +13,6 @@
     <div class="data">
       <div ng-repeat="country in shownCountries()" class="cell">
         {{country.population | number:0}}
-      </div>
-      <div ng-show="showGhostCountry()" class="cell ghost">
-        00.000.000
       </div>
     </div>
   </div>
@@ -27,9 +23,6 @@
       <div ng-repeat="country in shownCountries()" class="cell">
         {{country.people_with_internet | number:0}}
       </div>
-      <div ng-show="showGhostCountry()" class="cell ghost">
-        00.000.000
-      </div>
     </div>
   </div>
 
@@ -39,9 +32,6 @@
       <div ng-repeat="country in shownCountries()" class="cell">
         {{country.people_with_mobile_phone | number:0}}
       </div>
-      <div ng-show="showGhostCountry()" class="cell ghost">
-        00.000.000
-      </div>
     </div>
   </div>
 
@@ -50,9 +40,6 @@
     <div class="data">
       <div ng-repeat="country in shownCountries()" class="cell">
         {{country.people_with_broadband | number:0}}
-      </div>
-      <div ng-show="showGhostCountry()" class="cell ghost">
-        00.000.000
       </div>
     </div>
   </div>

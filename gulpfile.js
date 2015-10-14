@@ -270,8 +270,8 @@ gulp.task('bump', function() {
 ////////////////
 
 function changeEvent(event) {
-  var srcPattern = new RegExp('/.*(?=/' + config.source + ')/');
-  log('File ' + event.path.replace(srcPattern, '') + ' ' + event.type);
+  //var srcPattern = new RegExp('/.*(?=/' + config.source + ')/');
+  //log('File ' + event.path.replace(srcPattern, '') + ' ' + event.type);
 }
 
 function copyImages(isDev) {

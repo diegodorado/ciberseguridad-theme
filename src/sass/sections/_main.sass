@@ -14,8 +14,14 @@ section.main
       margin-top: 0
 
     .info
-      background: inline-image("info.png") no-repeat right 2px top 19px
       border-top: 1px solid $grey_light
+      position: relative
+
+      a.info-link
+        right: 2px
+        top: 19px
+        position: absolute
+
       b[class^="flag"]
         margin: 0 0 24px
       h3
@@ -52,30 +58,27 @@ section.main
 
   .select-country
     width: 100%
-    li
-      &:nth-child(2) span
-        padding-top: 10px
-      &.last-selected span
-        border-left: 6px solid $grey_mid
-        border-right: 6px solid $grey_mid
-        background-position: 6px center
-        padding: 0 32px 0
 
-      &.select-none
-        +container
-        span:first-child
-          width: 50%
-          float: left
-          border-right: 1px solid $grey_light
-          margin-right: -1px
-        span:last-child
-          width: 50%
-          float: right
-        span
-          text-align: center
-          padding: 0 !important
-          display: block
-          border-bottom: 1px solid $grey_light
+    .last-selected span
+      border-left: 6px solid $grey_mid
+      border-right: 6px solid $grey_mid
+      background-position: 6px center
+      padding: 0 32px 0
+
+    .select-none
+      +container
+      span:first-child
+        width: 50%
+        float: left
+      span:last-child
+        text-transform: uppercase
+        width: 50%
+        float: right
+      span
+        text-align: center
+        padding: 0 !important
+        display: block
+        border-bottom: 1px solid $grey_light
 
 
 
@@ -98,7 +101,7 @@ section.main
         margin-top: 5px
         height: 56px
         margin-bottom: 30px
-      a
+      a.read-more
         font-weight: normal
         display: block
         background: $grey_lighter
@@ -144,7 +147,7 @@ section.main
         &.empty p
           font-size: 20px
           line-height: 32px
-        a
+        a.read-more
           font-weight: bold
           display: inline-block
           background: none
@@ -158,7 +161,7 @@ section.main
     .left
       +span(3 of 4)
     .right
-      height: 756px
+      height: 790px
       display: block
       position: relative
       +span(1 of 4 last)
@@ -195,34 +198,3 @@ section.main
       padding: 90px 0 10px 70px
     .right
       +span(5 of 9 last)
-
-
-
-
-/* ---singles----- */
-
-
-.drag
-  //background: #efefef
-  opacity: 0.5
-
-.over
-  //background: #efefef
-  position: relative
-  &::before
-    position: absolute
-    top: 0
-    left: 0
-    display: block
-    content: " "
-    width: 1px
-    height: 9999px
-    border-left: 1px dotted $grey_mid
-  &::after
-    position: absolute
-    top: 134px
-    left: 0
-    display: block
-    content: " "
-    width: 99%
-    height: 9999px

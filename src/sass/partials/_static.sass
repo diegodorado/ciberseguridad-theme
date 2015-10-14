@@ -20,7 +20,7 @@ section.static
       margin-right: 50px
   +breakpoint($wide)
     +container($wide 9)
-    padding: 90px 0 40px
+    padding: 40px 0 40px
     .left
       width: 46%
       margin-left: 70px
@@ -31,23 +31,25 @@ section.static
     width: 100%
 
   h3
+    +break
     margin: 0
     font-size: 30px
     line-height: 30px
-    padding: 6px 0
+    padding: 17px 0 6px
     font-weight: normal
     color: $black
   p
     margin: 0
     font-size: 18px
     line-height: 26px
-    padding: 0
+    padding: 0 0 18px
     color: $black
+    width: 730px
     &.lead
       color: $grey_dark
       font-size: 20px
       line-height: 30px
-      padding: 5px 0 30px
+      padding: 5px 0 18px
 
   h4
     color: $black
@@ -56,3 +58,16 @@ section.static
     line-height: 30px
     margin: 0
     font-weight: bold
+
+  button
+    float: right
+    font-size: 18px
+    border: 2px solid $grey_light
+    background: none
+    width: 141px
+    height: 40px
+    color: $grey_dark
+
+section.about
+  .center
+    padding: 0px 70px

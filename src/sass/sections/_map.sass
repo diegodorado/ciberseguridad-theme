@@ -2,7 +2,7 @@
 #map_holder
   border-left: 1px solid $grey_light
   border-bottom: 1px solid $grey_light
-  height: 755px
+  height: 790px
   svg
     cursor: pointer
   .land
@@ -11,9 +11,11 @@
     fill: #A7A9AB
   .last_selected
     fill: #58585B
-  .banned, .boundary
+  .banned
+    fill: $grey_lighter
+  .boundary
     fill: none
-    stroke: #f6f6f6
+    stroke: $grey_lighter
     stroke-linejoin: round
     stroke-linecap: round
     vector-effect: non-scaling-stroke

@@ -2,14 +2,16 @@
   <nav>
     <a ng-hide="showGhostCountry()" class="select" ng-click="toggleNavCountrySelect()" click-out="navCountrySelectClickout()">
       <span translate>seleccionar.un.pais</span>
-      <ul ng-show="navCountrySelectOpened" class="select-country">
-        <li class="select-none" >
+      <div ng-show="navCountrySelectOpened" class="select-country">
+        <div class="select-none" >
           <span ng-click="deselectAll($event)" translate>deseleccionar.todos</span>
-        </li>
-        <li ng-repeat="country in countries" ng-class="{'selected':($stateParams.countries.indexOf(country.code) > -1), 'last-selected':($stateParams.last_selected == country.code)}" >
-          <span ng-click="clickCountry(country.code, $event)">{{country.name}}</span>
-        </li>
-      </ul>
+        </div>
+        <ul>
+          <li ng-repeat="country in countries" ng-class="{'selected':($stateParams.countries.indexOf(country.code) > -1), 'last-selected':($stateParams.last_selected == country.code)}" >
+            <span ng-click="clickCountry(country.code, $event)">{{country.name}}</span>
+          </li>
+        </ul>
+      </div>
     </a>
     <a ng-show="showPager()" class="prev" ng-class="{'disabled': prevDisabled() }" ng-click="prev()"></a>
     <a ng-show="showPager()" class="next" ng-class="{'disabled': nextDisabled() }" ng-click="next()"></a>
@@ -33,7 +35,7 @@
       <div class="box" click-out="clickOutSharer()">
         <div class="container">
           <a class="close" ng-click="closeSharer()"></a>
-          <h3 translate>Compartir</h3>
+          <h3 translate>compartir</h3>
           <div class="top">
             <div class="link">
               <input type="text" ng-value="shareLink"/>
@@ -55,10 +57,10 @@
             </div>
           </div>
           <div ng-form class="shareForm" name="shareForm">
-            <h4 translate>Enviar este vinculo a</h4>
+            <h4 translate>enviar.este.vinculo.a</h4>
             <input type="email" placeholder="Correo electronico"  ng-model="data.email" ng-required="true"/>
             <textarea placeholder="Comentario (opcional)"  ng-model="data.query" ng-required="true" ></textarea>
-            <button ng-click="submit()" translate>Enviar</button>
+            <button ng-click="submit()" translate>enviar</button>
           </div>
         </div>
       </div>
@@ -76,14 +78,16 @@
     <div ng-show="showGhostCountry()" class="country-header ghost" ng-click="toggleCountrySelect($event)" drag-and-drop drop="handleDrop" click-out="countrySelectClickout()">
       <span class="hint" translate>selecciona.un.pais.para.comparar</span>
       <i>
-        <ul ng-show="countrySelectOpened" class="select-country">
-          <li class="select-none" >
+        <div ng-show="countrySelectOpened" class="select-country">
+          <div class="select-none" >
             <span ng-click="deselectAll($event)" translate>deseleccionar.todos</span>
-          </li>
-          <li ng-repeat="country in countries" ng-class="{'selected':($stateParams.countries.indexOf(country.code) > -1), 'last-selected':($stateParams.last_selected == country.code)}" >
-            <span ng-click="clickCountry(country.code, $event)">{{country.name}}</span>
-          </li>
-        </ul>
+          </div>
+          <ul>
+            <li ng-repeat="country in countries" ng-class="{'selected':($stateParams.countries.indexOf(country.code) > -1), 'last-selected':($stateParams.last_selected == country.code)}" >
+              <span ng-click="clickCountry(country.code, $event)">{{country.name}}</span>
+            </li>
+          </ul>
+        </div>
       </i>
     </div>
   </header>

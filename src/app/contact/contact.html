@@ -1,29 +1,39 @@
 <section class="contact">
   <div class="box">
-    <h3>Contacto</h3>
+    <button class="back" ng-click="back()" translate>volver</button>
+    <h3 translate>contacto</h3>
     <div class="left">
       <div class="organization">
-        <h4>Organizacion de los estados americanos</h4>
-        <address class="line1">17th St. and Constitution Ave., N.W.</address>
-        <address class="line2">Washington, D.C., 20006-4499</address>
-        <address class="line3">Estados unidos de América</address>
-        <span class="phone">Tel: 1 (202) 370 5000</span>
+        <h4 translate>organizacion.de.los.estados.americanos</h4>
+        <address translate>oea.address.line1</address>
+        <address translate>oea.address.line2</address>
+        <address translate>oea.address.line3</address>
+        <span class="phone" translate>oea.phone</span>
       </div>
       <div class="organization">
-        <h4>Banco Interamericano de Desarrollo</h4>
-        <address class="line1">IDB Headquarters</address>
-        <address class="line2">1300 new York Avenue, N.W.</address>
-        <address class="line3">Washington, D.C., 20577, USA</address>
-        <span class="phone">Tel: (202) 623 1000</span>
+        <h4 translate>banco.interamericano.de.desarrollo</h4>
+        <address translate>bid.address.line1</address>
+        <address translate>bid.address.line2</address>
+        <address translate>bid.address.line3</address>
+        <span class="phone" translate>bid.phone</span>
       </div>
     </div>
-    <div ng-form class="right" name="contactForm">
-      <h4>Formulario de Contacto</h4>
-      <input type="text" placeholder="Nombre" ng-model="data.name" ng-required="true"/>
-      <input type="email" placeholder="Email"  ng-model="data.email" ng-required="true"/>
-      <textarea placeholder="Consulta"  ng-model="data.query" ng-required="true" ></textarea>
-      <p class="hint" ng-hide="contactForm.$valid">* Completar campos obligatorios</p>
-      <button ng-click="submit()">Enviar</button>
+    <div ng-form class="right" name="contactForm" ng-class="{'submission-attempted': submissionAttempted }" >
+      <h4 translate>formulario.de.contacto</h4>
+      <div class="name">
+        <input type="text" placeholder="{{'name' | translate}}" ng-model="data.name" ng-required="true"/>
+      </div>
+      <div class="email">
+        <input type="email" placeholder="{{'email' | translate}}"  ng-model="data.email" ng-required="true"/>
+      </div>
+      <div class="query">
+        <textarea placeholder="{{'query' | translate}}"  ng-model="data.query" ng-required="true" ></textarea>
+      </div>
+      <div class="hint" ng-show="submissionAttempted && !contactForm.$valid">
+        *
+        <span translate>completar.campos.obligatorios</span>
+      </div>
+      <button ng-click="submit()" translate>enviar</button>
     </div>
   </div>
 </div>

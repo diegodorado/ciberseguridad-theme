@@ -7,8 +7,9 @@ section.stats
     .country-header
       padding: 31px 0 4px
       border-top: 5px solid transparent
-      &.ghost span.hint
-        padding: 32px 10px 0px
+      &.ghost
+        height: 108px
+        padding: 0
     .last-selected
       border-top-color: $grey_dark
 
@@ -39,6 +40,8 @@ section.stats
 
       &.internet
         color: $grey_mid
+        &::before
+          border-bottom: 1px solid $grey_light
 
       &.phone
         color: $grey_dark
@@ -80,6 +83,8 @@ section.stats
     .stat-row
       .title
         text-align: center
+      &.internet::before
+        border-bottom: 1px solid $grey_light
 
     +breakpoint($medium)
       +container($medium)
@@ -93,6 +98,7 @@ section.stats
           +container
           .cell
             +span(1 of 4 last)
+
       .chart
         +container
         .country-stats
@@ -114,6 +120,9 @@ section.stats
             +span(1 of 9)
             &:nth-child(5)
               +span(1 of 9 last)
+        &.internet::before
+          border-bottom: none
+
       .chart
         +pre(4 of 9)
         .country-stats

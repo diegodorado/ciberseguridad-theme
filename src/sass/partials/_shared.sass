@@ -14,13 +14,17 @@
       display: block
       color: $black
 
+a.info-link
+  display: inline-block
+  cursor: pointer
+  +image-data-with-dimensions("info.png")
 
 .country-ml
   font-size: 0
   i
     display: inline-block
     width: 17px
-    height: 7px
+    height: 8px
     background: $grey_lighter
     margin-right: 1px
 
@@ -38,31 +42,45 @@
 .select-country
   background-color: $grey_lighter
   position: absolute
-  padding: 0 0 10px
-  list-style: none
+  padding: 61px 0 10px
   z-index: 1000
-  margin: 0
   left: 0
-  li
-    &.select-none
-      span
-        text-transform: none
-        letter-spacing: 1px
-        border-bottom: 1px solid $white
-        line-height: 60px
-    &.selected
-      span
-        background: $grey_light inline-image("check.png") no-repeat 12px center
-    & span:hover, &.selected span:hover
-      background-color: $grey_light
+  top: 60px
+
+
+  .select-none
+    background-color: $grey_lighter
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
     span
-      display: block
-      color: $grey_mid
-      text-transform: uppercase
-      padding: 0 38px 0
-      font-size: 15px
-      line-height: 36px
-      letter-spacing: 0.3px
+      line-height: 60px
+      height: 60px
+      text-transform: none
+      letter-spacing: 1px
+      border-bottom: 1px solid $white
+
+  ul
+    list-style: none
+    margin: 0
+    padding: 0
+    height: 36px * 5
+    overflow-y: scroll
+
+  .selected span
+    background: $grey_light inline-image("check.png") no-repeat 12px center
+  span:hover, .selected span:hover
+    background-color: $grey_light
+  span
+    display: block
+    color: $grey_mid
+    text-transform: uppercase
+    padding: 0 38px 0
+    font-size: 15px
+    line-height: 36px
+    height: 36px
+    letter-spacing: 0.3px
 
 
 
@@ -82,6 +100,7 @@ header.countries
   +no-select
   .country-header
     text-align: center
+    cursor: move
     b
       display: inline-block
     span.country-name
@@ -91,11 +110,13 @@ header.countries
       font-size: 12px
       height: 35px
   .ghost
+    cursor: pointer
     span.hint
       color: $grey_mid
       display: block
       font-size: 12px
       height: 35px
+
 
 
 #content
@@ -128,3 +149,30 @@ header.countries
 
 [ui-view].ng-leave-active
   opacity: 0
+
+
+
+
+
+.drag
+  opacity: 0.5
+
+.over
+  position: relative
+  &::before
+    position: absolute
+    top: 0
+    left: 0
+    display: block
+    content: " "
+    width: 1px
+    height: 9999px
+    border-left: 1px dotted $grey_mid
+  &::after
+    position: absolute
+    top: 134px
+    left: 0
+    display: block
+    content: " "
+    width: 99%
+    height: 9999px

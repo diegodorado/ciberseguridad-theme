@@ -39,9 +39,9 @@ configure = ($compileProvider,
     .useSanitizeValueStrategy(null)
 
   ngToastProvider .configure
-    timeout: 2000
+    timeout: 1500
     horizontalPosition: 'center'
-    maxNumber: 2
+    maxNumber: 3
     animation: 'fade'
 
 

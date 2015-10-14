@@ -70,6 +70,7 @@ Dashboard = ($scope, $filter, ngToast) ->
   $scope.last_selected = ->
     code = $scope.$stateParams.last_selected
     country = (c for c in $scope.countries when c.code is code)[0]
+    console.log country
     return country
 
   $scope.countriesSelected = ->

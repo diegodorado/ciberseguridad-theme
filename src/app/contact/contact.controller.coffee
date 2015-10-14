@@ -1,7 +1,13 @@
 ### @ngInject ###
-Contact = ($scope, $stateParams, dataservice) ->
+Contact = ($scope, $window, dataservice) ->
+
+  $scope.submissionAttempted = false
+
+  $scope.back = () ->
+    $window.history.back()
 
   $scope.submit = () ->
+    $scope.submissionAttempted = true
     #todo: actually send and email
     if $scope.contactForm.$valid
       dataservice.submitContact($scope.data).then (response) ->
@@ -18,6 +24,6 @@ Contact = ($scope, $stateParams, dataservice) ->
 angular.module('app.contact').controller 'Contact', Contact
 Contact.$inject = [
   '$scope'
-  '$stateParams'
+  '$window'
   'dataservice'
 ]

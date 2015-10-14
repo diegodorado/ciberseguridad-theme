@@ -80,23 +80,23 @@ section.graph
         font-weight: normal
         text-align: right
       &::after
-        border-bottom: 1px solid $grey_light
+        //border-bottom: 1px solid $grey_light
         padding-top: 4px
       &:last-child::after
-        border: none
+        //border: none
 
   .country-ml
     cursor: pointer
 
   .select-country
     text-align: left
-    li
-      &.select-none span
-        margin-bottom: 7px
-      &.last-selected  span
-        border-left: 6px solid $grey_mid
-        padding-left: 32px
-        background-position: 6px center
+
+    .select-none span
+      margin-bottom: 7px
+    .last-selected  span
+      border-left: 6px solid $grey_mid
+      padding-left: 32px
+      background-position: 6px center
 
   .shareLinks
     height: 154px
@@ -141,10 +141,7 @@ section.graph
         right: 0
         cursor: pointer
         +image-data-with-dimensions("cross.png")
-      a.info-link
-        display: inline-block
-        cursor: pointer
-        +image-data-with-dimensions("info.png")
+
     .last-selected
       border-bottom-color: $grey_mid
     .ghost
@@ -208,6 +205,7 @@ section.graph
       &::after
         margin-left: 19px
         margin-right: 18px
+
   .country-ml
     padding: 2px 0
     i
@@ -323,13 +321,6 @@ section.graph
         width: 14px
         &:first-child
           margin-left: 6px
-
-    header.countries
-      .country-header
-        cursor: move
-      .ghost
-        cursor: pointer
-
 
   +breakpoint($wide)
     +container($wide 9)
