@@ -39,12 +39,14 @@ Dashboard = ($scope, $filter, ngToast) ->
     if index is -1
       $scope.$stateParams.last_selected = code
       codes.push code
-      ngToast.create country.name + ' fue agregado al cuadro comparativo'
+      ngToast.create $filter('translate')('pais.agregado',
+        {country:country.name})
     else
       codes.splice index, 1
       [..., last] = codes
       $scope.$stateParams.last_selected = if last? then last else ''
-      ngToast.create country.name + ' fue quitado del cuadro comparativo'
+      ngToast.create $filter('translate')('pais.quitado',
+        {country:country.name})
 
     if codes.length is 0
       $scope.$stateParams.countries = ''

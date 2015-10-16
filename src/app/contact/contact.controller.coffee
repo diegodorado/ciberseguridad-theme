@@ -1,8 +1,14 @@
 ### @ngInject ###
-Contact = ($scope, $window, dataservice) ->
+Contact = ($scope, $window, dataservice, ngToast, $filter) ->
 
-  $scope.submissionAttempted = false
+  reset = ->
+    $scope.submissionAttempted = false
+    $scope.data =
+      name: ''
+      email: ''
+      query: ''
 
+  reset()
   $scope.back = () ->
     $window.history.back()
 
@@ -11,13 +17,8 @@ Contact = ($scope, $window, dataservice) ->
     #todo: actually send and email
     if $scope.contactForm.$valid
       dataservice.submitContact($scope.data).then (response) ->
-        console.log response
-      console.log $scope.data
-
-  $scope.data =
-    name: ''
-    email: ''
-    query: ''
+        ngToast.create  $filter('translate')('mensaje.enviado.correctamente')
+        reset()
 
   return
 
@@ -26,4 +27,6 @@ Contact.$inject = [
   '$scope'
   '$window'
   'dataservice'
+  'ngToast'
+  '$filter'
 ]
