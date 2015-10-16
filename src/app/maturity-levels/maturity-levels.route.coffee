@@ -16,48 +16,23 @@ getStates = ->
 
           "general@modal.maturity-levels":
             templateUrl: 'app/maturity-levels/general.html'
-          "factor@modal.maturity-levels":
-            template: ''
           "indicator@modal.maturity-levels":
             template: ''
     }
 
     {
-      state: 'modal.maturity-levels.factor'
+      state: 'modal.maturity-levels.indicator'
       config:
-        url: '/dimension/:dimension_id/factor/:factor_id'
-        params:
-          dimension_id:
-            value: ''
-            squash: true
-          factor_id:
-            value: ''
-            squash: true
-        views:
-          "general@modal.maturity-levels":
-            template: ''
-          "factor@modal.maturity-levels":
-            templateUrl: 'app/maturity-levels/factor.html'
-          "indicator@modal.maturity-levels":
-            template: ''
-
-    }
-
-    {
-      state: 'modal.maturity-levels.factor.indicator'
-      config:
-        url: '/indicator/:indicator_id/:maturity_level'
+        url: '/dimension/:dimension_id/factor/:factor_id/indicator/:indicator_id/country/:country'
         params:
           indicator_id:
             value: ''
-            squash: true
-          maturity_level:
+            squash: false
+          country:
             value: ''
-            squash: true
+            squash: false
         views:
           "general@modal.maturity-levels":
-            template: ''
-          "factor@modal.maturity-levels":
             template: ''
           "indicator@modal.maturity-levels":
             templateUrl: 'app/maturity-levels/indicator.html'

@@ -1,14 +1,18 @@
-Graph = ($scope, $window) ->
+Graph = ($scope, $window, dataservice, ngToast, $filter) ->
 
-  $scope.downloadLink = ->
-    '/api/excel/' + $scope.locale +
-      '/' + $scope.$stateParams.countries +
-      '/' + $scope.$stateParams.expanded_dimensions
+  updateDownloadLink = ->
+    $scope.downloadLink =
+      '/api/' + $scope.locale +
+        '/excel/' + $scope.$stateParams.countries +
+        '/' + $scope.$stateParams.expanded_dimensions
 
 
-  $scope.sharerOpened = false
+  $scope.$on 'country-toggled', (event, args) ->
+    updateDownloadLink()
+
+
   $scope.openSharer = ($event) ->
-    $scope.shareLink = $window.location
+    $scope.shareLink = $window.location.toString()
     $event.stopPropagation()
     $scope.sharerOpened = true
 
@@ -17,6 +21,26 @@ Graph = ($scope, $window) ->
 
   $scope.clickOutSharer = ->
     $scope.sharerOpened = false
+
+  reset = ->
+    updateDownloadLink()
+    $scope.sharerOpened = false
+    $scope.submissionAttempted = false
+    $scope.data =
+      email: ''
+      comment: ''
+
+  reset()
+
+  $scope.submit = () ->
+    $scope.submissionAttempted = true
+    #todo: actually send and email
+    if $scope.shareForm.$valid
+      data = $scope.data
+      data['link'] = $scope.shareLink
+      dataservice.submitShare(data).then (response) ->
+        ngToast.create  $filter('translate')('mensaje.enviado.correctamente')
+        reset()
 
   $scope.nextDisabled = ->
     $scope.$stateParams.offset >=
@@ -120,6 +144,9 @@ Graph = ($scope, $window) ->
 Graph.$inject = [
   '$scope'
   '$window'
+  'dataservice'
+  'ngToast'
+  '$filter'
 ]
 
 angular.module('app.dashboard').controller 'Graph', Graph

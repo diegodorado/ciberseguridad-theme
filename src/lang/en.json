@@ -43,6 +43,7 @@
     "enterate.de.la.situacion": "Enterate de la situación actual en materia de ciberseguridad en el país seleccionado",
     "leer.mas": "Read more",
     "pais": "Country",
+    "comment.optional": "Comment (Optional)",
     "seleccionar.un.pais": "Select a Country",
     "descargar.xls": "Download XLS",
     "compartir": "share",
@@ -52,8 +53,8 @@
     "selecciona.un.pais.para.comparar": "Select a country to compare",
     "poblacion.total": "Total Population",
     "con.acceso.a.internet": "With Internet access",
-    "con.acceso.a.internet.movil": "With mobile Internet access",
-    "con.computador": "With computer",
+    "con.telefono.movil": "With mobile phone",
+    "internet.penetration": "Internet Penetration",
     "observatorio.de.la": "OBSERVATORY OF",
     "ciberseguridad": "Cibersecurity",
     "en.america.latina.y.el.caribe": "IN LATIN AMERICA AND THE CARIBBEAN",
@@ -66,5 +67,7 @@
     "maturity-level": "Maturity Level",
     "maturity-level-brief": "",
     "{{'maturity-level-'+i+'-title'}}": "",
-    "{{'maturity-level-'+i+'-text'}}": ""
+    "{{'maturity-level-'+i+'-text'}}": "",
+    "con.internet": "With Internet",
+    "con.telefono": "With Phone"
 }

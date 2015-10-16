@@ -52,29 +52,61 @@
 
 
 
-  section.factor, section.indicator
+  section.indicator
 
-    h3
-      font-size: 23px
+    h3.dimension-name
       font-weight: normal
       margin: 0
+      padding-top: 10px
+      font-size: 19px
+
+    h3.country-name
+      color: $grey_dark
+      font-size: 30px
+      letter-spacing: 0.2px
+      margin: 38px 0 0
+      text-transform: uppercase
+      font-weight: normal
+
     h4.factor-name
       font-size: 20px
       color: $black
-      margin: 27px 0 0
+      margin: 38px 0 0
+
+    p.factor-description
+      color: $black
+      margin: 4px 0 36px
+      line-height: 24px
+      border-bottom: 1px solid $grey_light
+      padding-bottom: 32px
+
     h5
+      cursor: pointer
+      display: inline-block
+      position: relative
       margin: 4px 0 28px
       font-size: 20px
       font-weight: normal
+      +down-triangle($grey_dark, 14px, 13px, 0px)
+      &::after
+        transition: all 0.5s linear
+      span
+        display: block
+        padding-right: 24px
+
     .indicator
       +container
-      border-bottom: 1px solid $grey_light
-      padding-bottom: 26px
-      margin-bottom: 31px
+      .indicator-inner
+        border-bottom: 1px solid $grey_light
+        padding-bottom: 26px
+        margin-bottom: 31px
       &:last-child
         border-bottom: none
         margin-bottom: 0
         padding-bottom: 0
+
+      &.colapsed h5::after
+        transform: rotate(-90deg)
 
       .right
         margin-top: 24px
@@ -99,14 +131,3 @@
       &.active
         p
           color: inherit
-
-  section.factor
-    h5
-      cursor: pointer
-      margin: 0
-    p.factor-description
-      margin: 30px 0
-      color: $black
-    .indicator
-      padding-bottom: 10px
-      margin-bottom: 10px

@@ -38,25 +38,42 @@ a.info-link
 
 
 
+.submission-attempted
+  .ng-invalid
+    color: $error_red !important
+    +input-placeholder
+      color: $error_red !important
+  .hint
+    +break
+    width: 100%
+    padding-bottom: 10px
+    color: $error_red !important
+    float: left
+    font-size: 11px
+    text-transform: uppercase
+    margin: 0
+
 
 .select-country
   background-color: $grey_lighter
   position: absolute
-  padding: 61px 0 10px
+  padding: 50px 0 0px
   z-index: 1000
   left: 0
   top: 60px
 
 
   .select-none
-    background-color: $grey_lighter
+    background-color: $grey_mid
+    text-align: center
     position: absolute
     top: 0
     left: 0
     width: 100%
     span
-      line-height: 60px
-      height: 60px
+      color: $black
+      line-height: 40px
+      height: 40px
       text-transform: none
       letter-spacing: 1px
       border-bottom: 1px solid $white

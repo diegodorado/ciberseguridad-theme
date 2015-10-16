@@ -38,7 +38,7 @@ section.graph
       width: 130px
       margin-right: 5px
     .select-country
-      +top-triangle($grey_lighter, 14px, 118px)
+      +top-triangle($grey_mid, 14px, 118px)
       width: 250px
       top: 40px
       left: - ( 250px - 130px ) / 2
@@ -91,8 +91,6 @@ section.graph
   .select-country
     text-align: left
 
-    .select-none span
-      margin-bottom: 7px
     .last-selected  span
       border-left: 6px solid $grey_mid
       padding-left: 32px
@@ -120,6 +118,7 @@ section.graph
       i
         width: 40px
       span
+        border-left: none
         font-size: 12px
         color: $grey_mid
         padding: 0 21px
@@ -151,7 +150,7 @@ section.graph
         font-style: normal
         +image-data-with-dimensions("arrow-down.png")
       .select-country
-        +top-triangle($grey_lighter, 14px, 118px)
+        +top-triangle($grey_mid, 14px, 118px)
         width: 250px
         top: image-height("arrow-down.png") + 14px/2
         left: -(250px - image-width("arrow-down.png"))/2

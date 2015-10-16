@@ -1,54 +1,74 @@
 
 .overlay.country-details
 
-  .container
-    +container($large)
-    .left
-      +span(58%)
-    .right
-      +span(36% last)
 
   h3, h4
     margin: 0
 
   h3
-    color: $grey_dark
+    color: $black
     text-transform: uppercase
-    font-size: 22px
+    font-size: 28px
     font-weight: normal
     letter-spacing: 1.3px
     padding: 0
-    margin: 34px 0 4px 0
+    margin: 37px 0 11px 0
 
   p
-    color: $grey_dark
-    letter-spacing: 0.8px
-    font-size: 18px
-    margin: 0 0 30px 0
-    line-height: 30px
+    color: $black
+    font-size: 16px
+    margin: 0 56px 30px 0
+    line-height: 26px
 
   .stat
-    margin-right: 50px
-    border-bottom: 2px solid $grey_mid
-    padding-bottom: 26px
-    margin-bottom: 26px
+    border-bottom: 1px solid $grey_light
+    padding-bottom: 17px
+    margin: 0 20px 0 27px
+    &.population
+      margin-top: 71px
+      h4
+        color: $black
+        font-weight: bold
+        text-transform: uppercase
+      span
+        font-weight: bold
+        background: inline-image("globe.png") no-repeat bottom 0px left 0px
+    &.internet
+      margin-top: 15px
+      span
+        background: inline-image("desktop.png") no-repeat bottom 0px left 0px
 
-  i.globe
-    +replace-text-with-dimensions("globe.png")
-  i.phone
-    +replace-text-with-dimensions("phone.png")
-  i.desktop
-    +replace-text-with-dimensions("desktop.png")
-
+    &.phone
+      margin-top: 15px
+      span
+        background: inline-image("phone.png") no-repeat bottom 0px left 0px
+    &.penetration
+      margin-top: 15px
+      span
+        padding-left: 0px
+        font-size: 28px
 
   h4
-    font-size: 20px
-    color: $grey_mid
-    font-size: 24px
+    font-size: 18px
+    color: $grey_dark
+    margin-bottom: 8px
     font-weight: normal
 
-
   span
-    color: $grey_mid
-    font-size: 22px
-    line-height: 30px
+    color: $grey_dark
+    font-size: 18px
+    display: block
+    padding-left: 40px
+    line-height: 29px
+    height: 29px
+
+.overlay.country-details
+  .container
+    +breakpoint($large)
+      +container
+      padding-top: 54px
+      .left
+        +span(26%)
+        margin-right: 0
+      .right
+        +span(73% last)

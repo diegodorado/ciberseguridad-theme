@@ -43,6 +43,7 @@
     "enterate.de.la.situacion": "Enterate de la situación actual en materia de ciberseguridad en el país seleccionado.",
     "leer.mas": "Leer más",
     "pais": "País",
+    "comment.optional": "Comentario (Opcional)",
     "seleccionar.un.pais": "Seleccionar un País",
     "descargar.xls": "Descargar XLS",
     "compartir": "Compartir",
@@ -52,8 +53,8 @@
     "selecciona.un.pais.para.comparar": "Selecciona un pais para comparar",
     "poblacion.total": "Población total",
     "con.acceso.a.internet": "Con acceso a Internet",
-    "con.acceso.a.internet.movil": "Con acceso a Internet móvil",
-    "con.computador": "Con computador",
+    "con.telefono.movil": "Con teléfono Movil",
+    "internet.penetration": "Penetración de Internet",
     "observatorio.de.la": "Observatorio de la",
     "ciberseguridad": "Ciberseguridad",
     "en.america.latina.y.el.caribe": "en América Latina y el Caribe",
@@ -66,5 +67,7 @@
     "maturity-level": "Grado de madurez",
     "maturity-level-brief": "Se han identificado cinco niveles de madurez de la capacidad de seguridad cibernética, en el que el nivel más bajo implica un nivel de capacidad más bien ad-hoc y el nivel más alto es tanto un enfoque estratégico como una capacidad de adaptarse dinámicamente o cambiar por consideraciones ambientales (operativas, amenazas, socio-técnicas y políticas). Los diferentes niveles de madurez son:",
     "{{'maturity-level-'+i+'-title'}}": "",
-    "{{'maturity-level-'+i+'-text'}}": ""
+    "{{'maturity-level-'+i+'-text'}}": "",
+    "con.internet": "Con Internet",
+    "con.telefono": "Con teléfono"
 }

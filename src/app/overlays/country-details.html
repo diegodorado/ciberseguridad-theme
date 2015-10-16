@@ -2,44 +2,31 @@
   <div class="container">
 
     <a class="close" ng-click="close()"></a>
-    <b class="flag-{{country.code}}"></b>
-    <h3>{{country.name}}</h3>
 
-    <div class="left">
+    <div class="right">
+      <b class="flag-{{country.code}}"></b>
+      <h3>{{country.name}}</h3>
       <p ng-repeat="paragraph in country.description|nlToArray track by $index">{{paragraph}}</p>
     </div>
-    <div class="right">
-      <div class="stat">
-        <h4>2 millones</h4>
-        <span>de habitantes</span>
-      </div>
-      <div class="stat">
-        <h4>8%</h4>
-        <span>de la población latinoamericana</span>
-      </div>
-      <div class="stat">
-        <h4>
-          <i class="globe"></i>
-          2 millones
-        </h4>
-        <span>tienen acceso a internet</span>
-      </div>
-      <div class="stat">
-        <i class="phone"></i>
-        <h4>
-          2 millones
-        </h4>
-        <span>tienen acceso a internet móvil</span>
-      </div>
-      <div class="stat">
-        <i class="desktop"></i>
-        <h4>
-          2 millones
-        </h4>
-        <span>tienen acceso a computador</span>
-      </div>
 
-
+    <div class="left">
+      <div class="stat population">
+        <h4 translate>poblacion.total</h4>
+        <span>{{country.population | number:0}}</span>
+      </div>
+      <div class="stat internet">
+        <h4 translate>con.internet</h4>
+        <span>  {{country.people_with_internet | number:0}}</span>
+      </div>
+      <div class="stat phone">
+        <h4 translate>con.telefono</h4>
+        <span>{{country.mobile_phone_subscriptions | number:0}}</span>
+      </div>
+      <div class="stat penetration">
+        <h4 translate>internet.penetration</h4>
+        <span>{{(country.people_with_internet/country.population*100) | number:0}}%</span>
+      </div>
     </div>
+
   </div>
 </div>

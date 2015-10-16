@@ -10,8 +10,12 @@
   <span ng-click="toggleCountrySelect()" ng-show="$stateParams.countries" translate>compara.otro.pais</span>
   <div ng-show="countrySelectOpened" class="select-country">
     <div class="select-none" >
-      <span ng-click="deselectAll()" translate>deseleccionar.todos</span>
-      <span ng-click="toggleCountrySelect()" translate>aceptar</span>
+      <div class="select-none-left" >
+        <span ng-click="deselectAll()" translate>deseleccionar.todos</span>
+      </div>
+      <div class="select-none-right" >
+        <span ng-click="toggleCountrySelect()" translate>aceptar</span>
+      </div>
     </div>
     <ul>
       <li ng-repeat="country in countries" ng-class="{'selected':($stateParams.countries.indexOf(country.code) > -1), 'last-selected':($stateParams.last_selected == country.code)}" >

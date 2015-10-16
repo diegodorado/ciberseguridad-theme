@@ -27,19 +27,19 @@
   </div>
 
   <div class="phone stat-row">
-    <div class="title" translate>con.acceso.a.internet.movil</div>
+    <div class="title" translate>con.telefono.movil</div>
     <div class="data">
       <div ng-repeat="country in shownCountries()" class="cell">
-        {{country.people_with_mobile_phone | number:0}}
+        {{country.mobile_phone_subscriptions | number:0}}
       </div>
     </div>
   </div>
 
   <div class="computer stat-row">
-    <div class="title" translate>con.computador</div>
+    <div class="title" translate>internet.penetration</div>
     <div class="data">
       <div ng-repeat="country in shownCountries()" class="cell">
-        {{country.people_with_broadband | number:0}}
+        {{(country.people_with_internet/country.population*100) | number:0}}%
       </div>
     </div>
   </div>
@@ -48,8 +48,7 @@
     <div ng-repeat="country in shownCountries()" class="country-stats">
       <i class="population" ng-style="{ 'height' : statsChartHeight(country.population)+'%'}"></i>
       <i class="internet" ng-style="{ 'height' : statsChartHeight(country.people_with_internet)+'%'}"></i>
-      <i class="phone" ng-style="{ 'height' : statsChartHeight(country.people_with_mobile_phone)+'%'}"></i>
-      <i class="computer" ng-style="{ 'height' : statsChartHeight(country.people_with_broadband)+'%'}"></i>
+      <i class="phone" ng-style="{ 'height' : statsChartHeight(country.mobile_phone_subscriptions)+'%'}"></i>
     </div>
   </div>
 

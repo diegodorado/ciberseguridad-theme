@@ -60,6 +60,9 @@ dataservice = ($http, $rootScope, $q) ->
   @submitContact = (data)->
     $http.post('/api/'+$rootScope.locale+'/contact', data)
 
+  @submitShare = (data)->
+    $http.post('/api/'+$rootScope.locale+'/share', data)
+
   return @
 
 dataservice.$inject = [

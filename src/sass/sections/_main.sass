@@ -67,13 +67,15 @@ section.main
 
     .select-none
       +container
-      span:first-child
+      .select-none-left
         width: 50%
         float: left
-      span:last-child
+      .select-none-right
         text-transform: uppercase
         width: 50%
         float: right
+        span
+          border-left: 1px solid $grey_light
       span
         text-align: center
         padding: 0 !important
