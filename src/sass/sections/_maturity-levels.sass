@@ -84,7 +84,7 @@
       cursor: pointer
       display: inline-block
       position: relative
-      margin: 4px 0 28px
+      margin: 4px 0 14px
       font-size: 20px
       font-weight: normal
       +down-triangle($grey_dark, 14px, 13px, 0px)
@@ -96,33 +96,43 @@
 
     .indicator
       +container
-      .indicator-inner
-        border-bottom: 1px solid $grey_light
-        padding-bottom: 26px
-        margin-bottom: 31px
       &:last-child
         border-bottom: none
         margin-bottom: 0
         padding-bottom: 0
 
-      &.colapsed h5::after
-        transform: rotate(-90deg)
+      &.colapsed
+        h5::after
+          transform: rotate(-90deg)
 
+      .indicator-inner
+        +container
+        border-bottom: 1px solid $grey_light
+        padding-bottom: 7px
+        margin: 15px 0
+        &.colapsed
+          .country-ml
+            display: none
+          h4::after
+            transform: rotate(-90deg)
+      .left
+        cursor: pointer
       .right
-        margin-top: 24px
-      +breakpoint($medium)
-        .left
-          float: left
-          width: 115px
-        .right
-          margin-top: 0
-          padding-left: 160px
+        p
+          margin-top: 24px
+          margin-bottom: 27px
       h4
+        width: 140px
         font-size: 18px
         font-weight: normal
         margin: 0 0 10px
         text-transform: uppercase
         letter-spacing: 0.2px
+        position: relative
+        +down-triangle($grey_dark, 14px, 6px, 0px)
+        &::after
+          transition: all 0.5s linear
+
       p
         line-height: 25px
         color: $black
@@ -131,3 +141,21 @@
       &.active
         p
           color: inherit
+
+      +breakpoint($medium)
+        +container($medium)
+        .indicator h4
+          width: auto
+        .left
+          +span(1 of 4)
+        .right
+          +span(3 of 4 last)
+          p
+            margin: 0 20px 27px
+
+      +breakpoint($large)
+        +container($large)
+        .left
+          +span(2 of 9)
+        .right
+          +span(7 of 9 last)

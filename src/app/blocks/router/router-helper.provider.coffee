@@ -8,7 +8,7 @@ routerHelperProvider = ($locationProvider, $stateProvider, $urlRouterProvider) -
     resolveAlways: {}
 
   ### @ngInject ###
-  RouterHelper = ($location, $rootScope, $state, logger) ->
+  RouterHelper = ($location, $rootScope, $state, logger, $anchorScroll) ->
     handlingStateChangeError = false
     hasOtherwise = false
     stateCounts =
@@ -66,6 +66,7 @@ routerHelperProvider = ($locationProvider, $stateProvider, $urlRouterProvider) -
         handlingStateChangeError = false
         title = config.docTitle + ' ' + (toState.title or '')
         $rootScope.title = title
+        $anchorScroll()
 
     service =
       configureStates: configureStates
@@ -87,6 +88,8 @@ routerHelperProvider = ($locationProvider, $stateProvider, $urlRouterProvider) -
     '$rootScope'
     '$state'
     'logger'
+    '$anchorScroll'
+
   ]
   return
 

@@ -13,23 +13,25 @@ Indicator = ($scope) ->
   if code
     c = (c for c in $scope.countries  when c.code is code)[0]
     $scope.country = c
-    $scope.ml = c.maturity_levels[$scope.$stateParams.indicator_id]
+    $scope.mls = [c.maturity_levels[$scope.$stateParams.indicator_id]]
+  else
+    $scope.mls = [1..5]
 
   $scope.toggleIndicator = (indicator) ->
     if parseInt($scope.$stateParams.indicator_id,10) is indicator.id
       $scope.$stateParams.indicator_id = ''
     else
       $scope.$stateParams.indicator_id = indicator.id
-
+      
+    $scope.mls = [1..5]
+    #dont update, because of close button of overlay with go back behaviour
     #$scope.updateUrl()
 
   $scope.toggleMl = (i) ->
-    return
-    
-    if $scope.ml is i
-      $scope.ml = null
+    if $scope.mls.indexOf(i) is -1
+      $scope.mls.push i
     else
-      $scope.ml = i
+      $scope.mls.splice $scope.mls.indexOf(i), 1
 
 
 angular.module('app.maturity-levels').controller 'Indicator', Indicator

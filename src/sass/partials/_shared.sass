@@ -145,7 +145,8 @@ header.countries
 //*** page transitions ***//
 
 [ui-view].ng-enter, [ui-view].ng-leave
-  transition: opacity 0.8s ease-in-out
+  transition: opacity .5s ease-in-out
+
 
 //[ui-view].ng-enter
 //  transition-delay: 0.8s
@@ -166,7 +167,7 @@ header.countries
 
 [ui-view].ng-leave-active
   opacity: 0
-
+  display: none !important
 
 
 

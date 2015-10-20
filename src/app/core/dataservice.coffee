@@ -41,6 +41,8 @@ dataservice = ($http, $rootScope, $q) ->
       $rootScope.geomesh = topojson.mesh(resp[1].data,
         resp[1].data.objects.countries, (a, b) -> a != b )
 
+      el = document.getElementById('splash')
+      el?.parentNode?.removeChild el
 
       $rootScope.$broadcast 'data-loaded'
     )

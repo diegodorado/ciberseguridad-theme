@@ -12,7 +12,6 @@ getStates = ->
         views:
           "modal":
             templateUrl: 'app/maturity-levels/index.html'
-            controller: 'MaturityLevels'
 
           "general@modal.maturity-levels":
             templateUrl: 'app/maturity-levels/general.html'

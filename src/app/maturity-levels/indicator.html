@@ -11,16 +11,16 @@
       <span>{{ indicator.title }}</span>
     </h5>
     <div class="indicator fade" ng-slide-down="$stateParams.indicator_id == indicator.id" >
-      <div class="indicator-inner" ng-repeat="i in [1,2,3,4,5]" >
-        <div class="left">
-          <h4 ng-click="ml = i">
+      <div class="indicator-inner" ng-repeat="i in [1,2,3,4,5]" ng-class="{'colapsed': mls.indexOf(i) == -1}">
+        <div class="left"  ng-click="toggleMl(i)">
+          <h4>
             <span translate>{{'maturity-level-'+i+'-title'}}</span>
           </h4>
           <div class="country-ml ml-{{i}}">
             <i></i><i></i><i></i><i></i><i></i>
           </div>
         </div>
-        <div class="right" g-slide-down="!ml || ml == i" >
+        <div class="right" ng-slide-down="mls.indexOf(i) != -1" >
           <p>{{indicator['maturity_level'+i+'_text']}}</p>
         </div>
       </div>
