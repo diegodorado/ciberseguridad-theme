@@ -87,16 +87,19 @@ MapCtrl = ($scope, $window) ->
 
 
   zoom_and_center = (d) ->
+    max_scale = 20
     x = width / 2
     y = height / 2
     k = 1
     zoomed = false
+
 
     if d and d.id is $scope.$stateParams.last_selected
       b = path.bounds(d)
       w_scale = (b[1][0] - (b[0][0])) / width
       h_scale = (b[1][1] - (b[0][1])) / height
       k = .5 / Math.max(w_scale, h_scale)
+      k = Math.min(k, max_scale)
       x = (b[1][0] + b[0][0]) / 2
       y = (b[1][1] + b[0][1]) / 2
       zoomed = true

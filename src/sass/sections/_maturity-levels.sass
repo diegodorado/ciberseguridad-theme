@@ -110,17 +110,22 @@
         border-bottom: 1px solid $grey_light
         padding-bottom: 7px
         margin: 15px 0
+        .country-ml
+          overflow: hidden
+          height: 8px
+          transition: all linear 0.5s
+
         &.colapsed
           .country-ml
-            display: none
+            height: 0px
           h4::after
             transform: rotate(-90deg)
       .left
         cursor: pointer
       .right
         p
-          margin-top: 24px
-          margin-bottom: 27px
+          padding-top: 24px
+          padding-bottom: 27px
       h4
         width: 140px
         font-size: 18px
@@ -135,12 +140,11 @@
 
       p
         line-height: 25px
-        color: $black
+        color: $grey_mid
         margin: 0
         font-size: 18px
-      &.active
-        p
-          color: inherit
+      .currentMl p
+        color: $black
 
       +breakpoint($medium)
         +container($medium)
@@ -151,7 +155,7 @@
         .right
           +span(3 of 4 last)
           p
-            margin: 0 20px 27px
+            padding: 0 20px 27px
 
       +breakpoint($large)
         +container($large)
