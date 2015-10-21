@@ -22,7 +22,7 @@ Indicator = ($scope) ->
       $scope.mls[i.id] = [1..5]
 
   $scope.toggleIndicator = (indicator) ->
-    if parseInt($scope.$stateParams.indicator_id,10) is indicator.id
+    if parseInt($scope.$stateParams.indicator_id,10) is parseInt(indicator.id,10)
       $scope.$stateParams.indicator_id = ''
     else
       $scope.$stateParams.indicator_id = indicator.id
