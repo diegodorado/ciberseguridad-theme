@@ -6,6 +6,7 @@ getStates = ->
     {
       state: 'app.contact'
       config:
+        bodyClass: 'contact'
         url: 'contact'
         views:
           "content@":

@@ -1,31 +1,5 @@
 section.static
-  background: $white
-  +container($small 2)
-  .left, .right
-    padding: 30px
-  +breakpoint($medium)
-    +container($medium 4)
-  +breakpoint($large)
-    +container($large 9)
-    padding: 40px 0
-    .left, .right
-      padding: 0px
-    .left
-      float: left
-      width: 44%
-      margin-left: 50px
-    .right
-      float: right
-      width: 38%
-      margin-right: 50px
-  +breakpoint($wide)
-    +container($wide 9)
-    padding: 40px 0 40px
-    .left
-      width: 46%
-      margin-left: 70px
-    .right
-      margin-right: 70px
+  position: relative
 
   img
     width: 100%
@@ -35,16 +9,15 @@ section.static
     margin: 0
     font-size: 30px
     line-height: 30px
-    padding: 17px 0 6px
+    padding: 58px 0 2px
     font-weight: normal
     color: $black
   p
     margin: 0
-    font-size: 18px
-    line-height: 26px
+    font-size: 17px
+    line-height: 22px
     padding: 0 0 18px
     color: $black
-    width: 730px
     &.lead
       color: $grey_dark
       font-size: 20px
@@ -53,7 +26,7 @@ section.static
 
   h4
     color: $black
-    padding: 20px 0px 8px
+    padding: 16px 0px 0px
     font-size: 20px
     line-height: 30px
     margin: 0
@@ -68,6 +41,99 @@ section.static
     height: 40px
     color: $grey_dark
 
-section.about
   .center
-    padding: 0px 70px
+    &::after
+      content: " "
+      display: block
+      clear: both
+
+
+body.contributors, body.institutional, body.about, body.contact
+  #content
+    background: $grey_light
+
+
+body.contributors
+  section.static
+    .left, .right
+      margin-bottom: 60px
+
+    p.lead
+      padding-bottom: 78px
+
+    h4
+      font-weight: normal
+      text-transform: uppercase
+      letter-spacing: 0.6px
+      font-size: 18px
+    ul
+      margin: 0
+      padding: 10px 17px
+      li
+        font-size: 18px
+        line-height: 25px
+        margin-bottom: 10px
+
+body.institutional
+  ul
+    padding: 0
+    list-style: none
+    margin: 2px 0 27px
+    li
+      font-size: 18px
+      line-height: 25px
+  .center
+    &:nth-child(2),&:nth-child(3),&:nth-child(4)
+      border-bottom: 1px solid $grey_midder
+      margin-bottom: 28px
+
+  sub
+    font-size: 13px
+    color: $grey_mid
+    font-weight: normal
+
+  cite
+    display: block
+    font-style: normal
+    font-size: 11px
+    color: $grey_mid
+    line-height: 23px
+
+section.static
+  +container($small)
+  a.close
+    top: 50px
+    right: 20px
+
+  padding: 30px 0 60px
+  .center
+    margin: 0 20px
+  +breakpoint($medium)
+    a.close
+      right: 35px
+    .center
+      margin: 0 35px
+
+    +container($medium)
+  +breakpoint($large)
+    +container($large)
+    padding: 40px 0px 60px
+    a.close
+      top: 54px
+      right: 76px
+
+    .center
+      +break
+      margin: 0 70px
+
+    p
+      width: 730px
+
+    .left, .right
+      padding: 0px
+      float: left
+      width: 330px
+      margin-right: 35px
+
+  +breakpoint($wide)
+    +container($wide 9)

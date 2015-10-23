@@ -65,7 +65,7 @@ getStates = ->
           "content@":
             templateUrl:  ($stateParams) ->
               return '/about-' + $stateParams.locale + '.html'
-        title: 'about'
+        bodyClass: 'about'
     }
 
     {
@@ -76,7 +76,7 @@ getStates = ->
           "content@":
             templateUrl: ($stateParams) ->
               return '/contributors-' + $stateParams.locale + '.html'
-        title: 'contributors'
+        bodyClass: 'contributors'
     }
 
     {
@@ -88,7 +88,7 @@ getStates = ->
             templateUrl: ($stateParams) ->
               return '/institutional-information-' +
                 $stateParams.locale + '.html'
-        title: 'institutional-information'
+        bodyClass: 'institutional'
     }
 
 

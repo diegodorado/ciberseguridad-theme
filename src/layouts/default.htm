@@ -32,7 +32,7 @@ description = "Default layout"
     <!-- endbuild -->
 
 </head>
-<body>
+<body ng-class="$state.current.bodyClass">
   <toast></toast>
   <div id="header">
     <div ui-view="header" class="container"></div>
