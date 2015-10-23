@@ -2,7 +2,6 @@
     "name": "Nombre",
     "email": "Email",
     "query": "Consulta",
-    "volver": "Volver",
     "contacto": "Contacto",
     "organizacion.de.los.estados.americanos": "Organizacion de los Estados Americanos",
     "oea.address.line1": "17th St. and Constitution Ave., N.W.",
@@ -54,7 +53,7 @@
     "poblacion.total": "Población total",
     "con.acceso.a.internet": "Con acceso a Internet",
     "con.telefono.movil": "Con teléfono móvil",
-    "internet.penetration": "Penetración de Internet",
+    "con.computador": "Con computador",
     "observatorio.de.la": "Observatorio de la",
     "ciberseguridad": "Ciberseguridad",
     "en.america.latina.y.el.caribe": "en América Latina y el Caribe",
@@ -69,5 +68,6 @@
     "{{'maturity-level-'+i+'-title'}}": "",
     "{{'maturity-level-'+i+'-text'}}": "",
     "con.internet": "Con Internet",
-    "con.telefono": "Con teléfono"
+    "con.telefono": "Con teléfono",
+    "internet.penetration": "Penetración de Internet"
 }

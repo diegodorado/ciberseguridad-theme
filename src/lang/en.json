@@ -2,7 +2,6 @@
     "name": "Name",
     "email": "Email",
     "query": "Query",
-    "volver": "Go Back",
     "contacto": "Contact",
     "organizacion.de.los.estados.americanos": "Organizacion de los Estados Americanos",
     "oea.address.line1": "17th St. and Constitution Ave., N.W.",
@@ -54,7 +53,7 @@
     "poblacion.total": "Total Population",
     "con.acceso.a.internet": "With Internet access",
     "con.telefono.movil": "With mobile phone",
-    "internet.penetration": "Internet Penetration",
+    "con.computador": "With computer",
     "observatorio.de.la": "OBSERVATORY OF",
     "ciberseguridad": "Cibersecurity",
     "en.america.latina.y.el.caribe": "IN LATIN AMERICA AND THE CARIBBEAN",
@@ -69,5 +68,6 @@
     "{{'maturity-level-'+i+'-title'}}": "",
     "{{'maturity-level-'+i+'-text'}}": "",
     "con.internet": "With Internet",
-    "con.telefono": "With Phone"
+    "con.telefono": "With Phone",
+    "internet.penetration": "Internet Penetration"
 }

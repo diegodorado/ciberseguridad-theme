@@ -36,10 +36,10 @@
   </div>
 
   <div class="computer stat-row">
-    <div class="title" translate>internet.penetration</div>
+    <div class="title" translate>con.computador</div>
     <div class="data">
       <div ng-repeat="country in shownCountries()" class="cell">
-        {{(country.people_with_internet/country.population*100) | number:0}}%
+        {{(country.people_with_computer) | number:0}}
       </div>
     </div>
   </div>
@@ -49,6 +49,7 @@
       <i class="population" ng-style="{ 'height' : statsChartHeight(country.population)+'%'}"></i>
       <i class="internet" ng-style="{ 'height' : statsChartHeight(country.people_with_internet)+'%'}"></i>
       <i class="phone" ng-style="{ 'height' : statsChartHeight(country.mobile_phone_subscriptions)+'%'}"></i>
+      <i class="computer" ng-style="{ 'height' : statsChartHeight(country.people_with_computer)+'%'}"></i>
     </div>
   </div>
 
