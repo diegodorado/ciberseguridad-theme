@@ -1,3 +1,18 @@
+//HiFi logos
+$langs: es en
+@each $lang in  $langs
+  html[lang="#{$lang}"]
+    @each $breakpoint in $breakpoints
+      $res: ($breakpoint / 1px)
+      +breakpoint($breakpoint)
+        .partners
+          .oea
+            +hd_logo("logos/#{$lang}-oea-#{$res}-2x.png")
+          .bid
+            +hd_logo("logos/#{$lang}-bid-#{$res}-2x.png")
+
+
+
 #header
   height: 161px
   background: $white
@@ -11,15 +26,14 @@
     text-decoration: none
 
   //HiFi logos
-  @each $breakpoint in $breakpoints
-    $res: ($breakpoint / 1px)
-    +breakpoint($breakpoint)
-      .partners
-        .oea
-          +hd_logo("logos/oea-#{$res}-2x.png")
-        .bid
-          +hd_logo("logos/bid-#{$res}-2x.png")
-
+  //@each $breakpoint in $breakpoints
+  //  $res: ($breakpoint / 1px)
+  //  +breakpoint($breakpoint)
+  //    .partners
+  //      .oea
+  //        +hd_logo("logos/oea-#{$res}-2x.png")
+  //      .bid
+  //        +hd_logo("logos/bid-#{$res}-2x.png")
 
   .isologo
     span
@@ -67,13 +81,14 @@
         padding-bottom: 15px
       a
         color: $grey_mid
-        font-size: 12px
-        line-height: 12px
         display: block
         letter-spacing: 1.2px
         text-align: center
-        padding-left: 32px
-        padding-right: 20px
+        font-size: 16px
+        line-height: 22px
+        padding-left: 40px
+        padding-right: 40px
+
         &.active
           color: $black
         &:hover
@@ -113,6 +128,11 @@
         background-position: 33px 34px
       .sm
         margin-left: 15px
+      ul a
+        font-size: 12px
+        line-height: 12px
+        padding-left: 32px
+        padding-right: 20px
 
     .partners
       top: 0

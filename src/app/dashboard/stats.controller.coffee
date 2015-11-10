@@ -3,10 +3,9 @@ Stats = ($scope) ->
   $scope.statsChartHeight = (people) ->
     max = 1 # avoid 0 division
     people = parseInt(people,10)
-    populations = (parseInt(c.population,10) for c in $scope.countries when $scope.$stateParams.countries.indexOf(c.code) > -1)
-    for p in populations
-      if p > max
-        max = p
+    for c in $scope.countries when $scope.$stateParams.countries.indexOf(c.code) > -1
+      for attr in ['population', 'people_with_internet', 'mobile_phone_subscriptions', 'people_with_computer']
+        max = Math.max(max, parseInt(c[attr],10))
 
     return Math.round(100*people/max, 0)
 

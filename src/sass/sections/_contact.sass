@@ -35,14 +35,14 @@ section.contact
     display: block
 
   input, textarea
-    width: 96%
+    width: 100%
+    box-sizing: border-box
+    padding: 12px
     background: $white
     border: 1px solid $grey_light
     text-transform: uppercase
     font-size: 12px
-    padding: 12px 2%
     color: $grey_dark
-
     +input-placeholder
       +opacity(1)
       color: $grey_mid
@@ -57,15 +57,25 @@ section.contact
     resize: none
 
   button
-    float: left
-    border: 2px solid $grey_light
-    background: $white
-    width: 121px
-    height: 42px
+    border: none
+    background: $grey_lighter
+    height: 55px
+    width: 100%
     color: $grey_dark
+    font-size: 16px
+    &:hover
+      background: $grey_light
 
 
 section.contact
+  +breakpoint($medium)
+    button
+      float: left
+      border: 1px solid $grey_light
+      background: $white
+      width: 121px
+      height: 42px
+
   +breakpoint($large)
     .left
       +span(5 of 12)

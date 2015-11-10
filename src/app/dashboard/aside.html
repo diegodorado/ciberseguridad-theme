@@ -31,13 +31,19 @@
 </div>
 
 <div class="info" ng-if="$stateParams.last_selected">
-  <a  ui-sref="modal.country-details({code: $stateParams.last_selected})" class="info-link"></a>
-  <b class="flag-{{$stateParams.last_selected}}"></b>
+  <a  ui-sref="app.country({code: $stateParams.last_selected})" class="info-link"></a>
+  <div class="pager">
+    <b class="flag-{{$stateParams.last_selected}}"></b>
+    <nav>
+      <a ng-show="showPager()" class="prev" ng-class="{'disabled': prevDisabled() }" ng-click="prev()"></a>
+      <a ng-show="showPager()" class="next" ng-class="{'disabled': nextDisabled() }" ng-click="next()"></a>
+    </nav>
+  </div>
   <h3>{{last_selected().name}}</h3>
   <p>
     {{last_selected().excerpt}}
   </p>
-  <a ui-sref="modal.country-details({code: $stateParams.last_selected})" class="read-more">
+  <a ui-sref="app.country({code: $stateParams.last_selected})" class="read-more">
     <span translate>leer.mas</span>
   </a>
 </div>

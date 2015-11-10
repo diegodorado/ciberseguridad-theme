@@ -1,5 +1,8 @@
 ### @ngInject ###
-CountryDetails = ($scope, $stateParams) ->
+Country = ($scope,$window, $stateParams) ->
+
+  $scope.close = () ->
+    $window.history.back()
 
   @init = () ->
     c = (c for c in $scope.countries when c.code is $stateParams.code)[0]
@@ -12,8 +15,9 @@ CountryDetails = ($scope, $stateParams) ->
 
   return
 
-angular.module('app.overlays').controller 'CountryDetails', CountryDetails
-CountryDetails.$inject = [
+angular.module('app.country').controller 'Country', Country
+Country.$inject = [
   '$scope'
+  '$window'
   '$stateParams'
 ]

@@ -23,13 +23,6 @@ Dashboard = ($scope, $filter, ngToast) ->
     offset = getProperOffset(codes)
     unless parseInt($scope.$stateParams.offset,10) is offset
       $scope.$stateParams.offset = offset
-      $scope.updateUrl()
-
-
-    if codes.length > $scope.countriesPerPage()
-      codes.length - $scope.countriesPerPage()
-    else
-      0
 
   $scope.toggleCountry = (code) ->
     country = (c for c in $scope.countries when c.code is code)[0]
@@ -92,6 +85,31 @@ Dashboard = ($scope, $filter, ngToast) ->
 
   $scope.showPager = ->
     $scope.countriesSelected() > $scope.countriesPerPage()
+
+
+  $scope.nextDisabled = ->
+    $scope.$stateParams.offset >=
+      $scope.countriesSelected() - $scope.countriesPerPage()
+
+  $scope.prevDisabled = ->
+    $scope.$stateParams.offset <= 0
+
+  checkOffset = ->
+    if $scope.countriesPerPage() is 1
+      codes = getCodes()
+      $scope.$stateParams.last_selected = codes[$scope.$stateParams.offset]
+
+  $scope.next = ->
+    unless $scope.nextDisabled()
+      $scope.$stateParams.offset++
+      checkOffset()
+      $scope.updateUrl()
+
+  $scope.prev = ->
+    unless $scope.prevDisabled()
+      $scope.$stateParams.offset--
+      checkOffset()
+      $scope.updateUrl()
 
   updateOffset(getCodes())
   return

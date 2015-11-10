@@ -10,25 +10,6 @@ section.graph
     +container
     padding-top: 20px
     height: 27px
-    nav
-      float: right
-      font-size: 0
-    a
-      display: block
-      float: left
-      width: 40px
-      height: 25px
-      border: 1px solid $grey_light
-      &:hover
-        background-color: $grey_lighter
-      &.disabled
-        opacity: 0.5
-        &:hover
-          background-color: transparent
-    .prev
-      background: inline-image("arrow-left.png") no-repeat center center
-    .next
-      background: inline-image("arrow-right.png") no-repeat center center
     .select
       color: $grey_mid
       position: relative
@@ -173,11 +154,12 @@ section.graph
       margin: 0
     .factor
       h4
-        line-height: 13px
-        font-size: 13px
-        text-align: left
-        margin: 0 0 3px 21px
-        height: 13px
+        line-height: 14px
+        font-size: 16px
+        text-align: right
+        margin-top: 0
+        margin-bottom: 3px
+        height: 16px
       &:first-child h4
         margin-top: 5px
 
@@ -191,9 +173,9 @@ section.graph
         cursor: pointer
         font-weight: normal
         text-align: right
-        font-size: 13px
+        font-size: 15px
         line-height: 13px
-        height: 16px
+        height: 18px
       &::after
         margin-left: 19px
         margin-right: 18px
@@ -203,7 +185,7 @@ section.graph
     i
       width: 15.8px
 
-  .graph-header
+  .graph-header, .pager
     display: none
 
   .graph-data::before
@@ -216,7 +198,7 @@ section.graph
       +break
 
     .dimension
-      h3, h5
+      h3, h4, h5
         margin: 0
         +span(197px)
 
@@ -240,7 +222,6 @@ section.graph
         font-size: 24px
       .factor
         h4
-          text-align: right
           font-size: 18px
           line-height: 30px
           height: 30px

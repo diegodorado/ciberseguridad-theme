@@ -42,23 +42,6 @@ Graph = ($scope, $window, dataservice, ngToast, $filter) ->
         ngToast.create  $filter('translate')('mensaje.enviado.correctamente')
         reset()
 
-  $scope.nextDisabled = ->
-    $scope.$stateParams.offset >=
-      $scope.countriesSelected() - $scope.countriesPerPage()
-
-  $scope.prevDisabled = ->
-    $scope.$stateParams.offset <= 0
-
-
-  $scope.next = ->
-    unless $scope.nextDisabled()
-      $scope.$stateParams.offset++
-      $scope.updateUrl()
-
-  $scope.prev = ->
-    unless $scope.prevDisabled()
-      $scope.$stateParams.offset--
-      $scope.updateUrl()
 
   $scope.navCountrySelectClickout = ->
     if $scope.navCountrySelectOpened

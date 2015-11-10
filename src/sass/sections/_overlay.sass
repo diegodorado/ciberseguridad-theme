@@ -2,8 +2,12 @@
   background: $white
   border: 1px solid $grey_mid
   margin: 0 auto
-  padding: 42px
+  padding: 20px
   +container($large)
 
   .container
     position: relative
+
++breakpoint($large)
+  .overlay
+    padding: 42px

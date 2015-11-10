@@ -24,7 +24,7 @@ a.close
   position: absolute
   top: 0
   right: 0
-  +image-data-with-dimensions("cross.png")
+  +image-data-with-dimensions("close.png")
 
 
 .country-ml
@@ -60,6 +60,29 @@ a.close
     font-size: 11px
     text-transform: uppercase
     margin: 0
+
+
+
+.pager
+  nav
+    float: right
+    font-size: 0
+  a
+    display: block
+    float: left
+    width: 40px
+    height: 25px
+    border: 1px solid $grey_light
+    &:hover
+      background-color: $grey_lighter
+    &.disabled
+      opacity: 0.5
+      &:hover
+        background-color: transparent
+  .prev
+    background: inline-image("arrow-left.png") no-repeat center center
+  .next
+    background: inline-image("arrow-right.png") no-repeat center center
 
 
 .select-country
