@@ -27,7 +27,7 @@ module.exports = function() {
             image: build + 'assets/images',
             font: build + 'assets/fonts',
         },
-        css: build + '/**/*.css',
+        css: temp + '/**/*.css',
         fonts: [
             src + 'fonts/**/*.*'
         ],
@@ -63,6 +63,8 @@ module.exports = function() {
             clean: true,
             exclude: ['.DS_Store'],
         },
+
+
 
         sass: src + 'sass/app.sass',
 

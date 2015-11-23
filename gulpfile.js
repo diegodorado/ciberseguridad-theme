@@ -25,8 +25,8 @@ gulp.task('compass', function() {
     return gulp.src(config.sass)
         .pipe($.plumber())
         .pipe($.compass(config.compassConfig))
-        .pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}))
-        .pipe(gulp.dest(config.build + 'assets/css'));
+        .pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}));
+        //.pipe(gulp.dest(config.temp));
 });
 
 gulp.task('coffee', function() {
@@ -73,7 +73,7 @@ gulp.task('images', function() {
   log('Copying and compressing images');
   return gulp
     .src(config.images)
-    //.pipe($.imagemin({optimizationLevel:4}))
+    .pipe($.imagemin({optimizationLevel:4}))
     .pipe(gulp.dest(config.build + 'assets/images'))
     ;
 });
@@ -182,7 +182,7 @@ gulp.task('build', gulp.series(
   }
 ));
 
-gulp.task('cssfix', function() {
+gulp.task('assetsFix', function() {
   log('Fixing assets sources to work with octobercms');
   return gulp
     .src(config.index)
@@ -197,38 +197,50 @@ gulp.task('cssfix', function() {
 });
 
 
-gulp.task('optimize', gulp.series('build', 'cssfix', function() {
-    log('Optimizing the js, css and html');
-    var assets = $.useref.assets({searchPath: './'});
-    var cssFilter = $.filter('**/*.css');
-    var jsLibFilter = $.filter('**/lib.js');
-    var jsAppFilter = $.filter('**/app.js');
 
-    return gulp
-        .src(config.index)
-        .pipe($.plumber())
-        .pipe(assets)
-        .pipe(cssFilter)
-        .pipe($.csso())
-        .pipe(cssFilter.restore())
-        .pipe(jsLibFilter)
-        .pipe($.uglify())
-        .pipe(jsLibFilter.restore())
-        .pipe(jsAppFilter)
-        .pipe(jsAppFilter.restore())
-        .pipe($.rev())
-        .pipe(assets.restore())
-        .pipe($.useref())
-        .pipe($.revReplace({replaceInExtensions: ['.htm']}))
-        .pipe($.regexReplace({
-            regex:'(\.{2}/assets/.*/.*)\"',
-            replace: function (match) {
-                return '{{ \'' + match.replace('../', '') + '\' | theme }}';
-            }}))
-        .pipe(gulp.dest(config.build + 'layouts/'))
-        .pipe($.rev.manifest())
-        .pipe(gulp.dest(config.build))
-        ;
+gulp.task('optimize', gulp.series('build', function() {
+    log('Optimizing the js, css and html');
+    var cssFilter = $.filter('**/*.css', {restore: true, passthrough: false});
+    var jsLibFilter = $.filter(['**/lib.js'], {restore: true, passthrough: false});
+    var jsAppFilter = $.filter(['**/app.js'], {restore: true, passthrough: false});
+    var layoutFilter = $.filter(['**/*.htm'], {restore: true, passthrough: false});
+
+    var stream = gulp
+      .src(config.index)
+      .pipe($.plumber())
+      .pipe($.useref({searchPath: './'}))
+      // filter a subset of the files
+      .pipe(jsAppFilter)
+      // run them through a plugin
+      //.pipe($.uglify())
+      .pipe($.rev())
+      .pipe(gulp.dest(config.build))
+      .pipe(jsAppFilter.restore)
+      // filter a subset of the files
+      .pipe(jsLibFilter)
+      // run them through a plugin
+      .pipe($.uglify())
+      .pipe($.rev())
+      .pipe(gulp.dest(config.build))
+      .pipe(jsLibFilter.restore)
+      // filter a subset of the files
+      .pipe(cssFilter)
+      // run them through a plugin
+      .pipe($.csso())
+      .pipe($.rev())
+      .pipe(gulp.dest(config.build))
+      .pipe(cssFilter.restore)
+      .pipe($.revReplace({replaceInExtensions: ['.htm']}))
+      .pipe(layoutFilter)
+      .pipe($.regexReplace({
+          regex:'\"(assets/.*/.*)\"',
+          replace: function (match) {
+              return '{{ \'' + match + '\' | theme }}';
+          }}))
+      .pipe(gulp.dest(config.build + 'layouts/'));
+
+    return stream;
+
 }));
 
 gulp.task('rsync', gulp.series('optimize', function() {
@@ -237,15 +249,24 @@ gulp.task('rsync', gulp.series('optimize', function() {
 }));
 
 
+// rsync -auv deploy@staging.cybersecurityinlac.com:/home/deploy/staging/current/themes/ciberseguridad/pages/* tmp/
+// cp -R tmp/* src/pages/
+// rm -rf tmp
+
+
 //ogr2ogr -f GeoJSON   -where "ADM0_A3 IN ('GBR', 'IRL')" subunits.json   ne_10m_admin_0_map_subunits.shp
 //topojson --id-property ISO_A2 -p code=ISO_A2 -p code -o countries.json --bbox countries=america4.geojson
 
-gulp.task('serve-dev', gulp.series('build', 'cssfix', function() {
+gulp.task('serve', gulp.series('optimize', function() {
+  startBrowserSync(false, false);
+}));
+
+gulp.task('serve-dev', gulp.series('build', 'assetsFix', function() {
   startBrowserSync(true, false);
 }));
 
 
-gulp.task('serve-dev2', gulp.series('build', 'cssfix', function() {
+gulp.task('serve-dev2', gulp.series('build', 'assetsFix', function() {
   startBrowserSync(true, true);
 }));
 
@@ -288,7 +309,7 @@ function startBrowserSync(isDev, server) {
     if (isDev) {
         gulp.watch(
                 [config.html],
-                gulp.series('build', 'cssfix', browserSync.reload)
+                gulp.series('build', 'assetsFix', browserSync.reload)
             )
             .on('change', function(event) { changeEvent(event);});
         gulp.watch([config.htmltemplates], gulp.series('templatecache'))
@@ -328,7 +349,6 @@ function startBrowserSync(isDev, server) {
         baseDir: './',
         middleware: function (req, res, next) {
           if (!fs.existsSync('./'+req._parsedUrl.pathname)) {
-            console.log('not exists');
             req.url = "/index.html";
           }
           next();
