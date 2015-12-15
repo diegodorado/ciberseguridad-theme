@@ -92,6 +92,18 @@ getStates = ->
     }
 
 
+    {
+      state: 'app.credits'
+      config:
+        url: ':locale/credits'
+        views:
+          "content@":
+            templateUrl: ($stateParams) ->
+              return '/credits-' +
+                $stateParams.locale + '.html'
+        bodyClass: 'credits'
+    }
+
   ]
 
 ### @ngInject ###

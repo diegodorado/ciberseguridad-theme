@@ -17,14 +17,14 @@
 a.info-link
   display: inline-block
   cursor: pointer
-  +image-data-with-dimensions("info.png")
+  +retina-sprite($sprite-info-group)
 
 a.close
   display: block
   position: absolute
   top: 0
   right: 0
-  +image-data-with-dimensions("close.png")
+  +retina-sprite($sprite-close-group)
 
 
 .country-ml
@@ -80,9 +80,24 @@ a.close
       &:hover
         background-color: transparent
   .prev
-    background: inline-image("arrow-left.png") no-repeat center center
+    position: relative
+    &::after
+      position: absolute
+      top: 6px
+      left: 13px
+      content: " "
+      display: block
+      +retina-sprite($sprite-arrow-left-group)
+
   .next
-    background: inline-image("arrow-right.png") no-repeat center center
+    position: relative
+    &::after
+      position: absolute
+      top: 6px
+      left: 13px
+      content: " "
+      display: block
+      +retina-sprite($sprite-arrow-right-group)
 
 
 .select-country
@@ -117,7 +132,16 @@ a.close
     overflow-y: scroll
 
   .selected span
-    background: $grey_light inline-image("check.png") no-repeat 10px center
+    background: $grey_light
+    position: relative
+    &::after
+      position: absolute
+      top: 12px
+      left: 10px
+      content: " "
+      display: block
+      +retina-sprite($sprite-check-group)
+
   span:hover, .selected span:hover
     background-color: $grey_light
   span

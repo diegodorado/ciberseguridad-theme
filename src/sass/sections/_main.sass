@@ -41,13 +41,23 @@ section.main
     +no-select
     position: relative
 
-  button.select
+  .select
+    +no-select
+    cursor: pointer
     position: relative
     text-align: left
-    background: inline-image("caret2.png") no-repeat
     border: none
     width: 100%
     padding: 0
+    position: relative
+    &::after
+      position: absolute
+      top: 23px
+      right: 29px
+      content: " "
+      display: block
+      +retina-sprite($sprite-caret2-group)
+
     &:focus
       outline: 0
     span
@@ -63,8 +73,10 @@ section.main
     .last-selected span
       border-left: 6px solid $grey_mid
       border-right: 6px solid $grey_mid
-      background-position: 6px center
       padding: 0 32px 0
+      &::after
+        left: 4px
+      
 
     .select-none
       +container
@@ -118,7 +130,7 @@ section.main
     display: none
 
 
-  button.select
+  .select
     background-position: right 22px center
     span
       font-size: 15px
@@ -171,7 +183,7 @@ section.main
       position: relative
       +span(1 of 4 last)
 
-    button.select
+    .select
       background-position: right 29px center
       span
         letter-spacing: normal

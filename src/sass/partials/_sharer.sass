@@ -45,10 +45,25 @@
         line-height: 40px
 
         &.twitter
-          background: inline-image("twitter.png") no-repeat left center
           margin-right: 22px
+          position: relative
+          &::after
+            position: absolute
+            top: 7px
+            left: 0
+            content: " "
+            display: block
+            +retina-sprite($sprite-twitter-group)
+
         &.facebook
-          background: inline-image("facebook.png") no-repeat left center
+          position: relative
+          &::after
+            position: absolute
+            top: 7px
+            left: 0
+            content: " "
+            display: block
+            +retina-sprite($sprite-facebook-group)
 
   .shareForm
     margin-top: 50px

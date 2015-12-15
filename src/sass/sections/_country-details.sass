@@ -16,7 +16,7 @@ section.country
     color: $black
     font-size: 17px
     line-height: 26px
-    margin: 0 0 30px 0
+    margin: 0
 
   .stat
     border-bottom: 1px solid $grey_light
@@ -29,21 +29,49 @@ section.country
         text-transform: uppercase
       span
         font-weight: bold
-        background: inline-image("population.png") no-repeat bottom 0px left 0px
+        position: relative
+        &::after
+          position: absolute
+          left: 0
+          bottom: 0
+          content: " "
+          display: block
+          +retina-sprite($sprite-population-group)
     &.internet
       margin-top: 15px
       span
-        background: inline-image("wifi.png") no-repeat bottom 0px left 0px
+        position: relative
+        &::after
+          position: absolute
+          left: 0
+          bottom: 0
+          content: " "
+          display: block
+          +retina-sprite($sprite-wifi-group)
 
     &.computer
       margin-top: 15px
       span
-        background: inline-image("desktop.png") no-repeat bottom 0px left 0px
+        position: relative
+        &::after
+          position: absolute
+          left: 0
+          bottom: 0
+          content: " "
+          display: block
+          +retina-sprite($sprite-desktop-group)
 
     &.phone
       margin-top: 15px
       span
-        background: inline-image("phone.png") no-repeat bottom 0px left 0px
+        position: relative
+        &::after
+          position: absolute
+          left: 0
+          bottom: 0
+          content: " "
+          display: block
+          +retina-sprite($sprite-phone-group)
     &.penetration
       margin-top: 15px
       span
@@ -74,7 +102,7 @@ section.country
         margin: 0 20px 0 27px
 
       p
-        margin: 0 56px 30px 0
+        margin: 0 56px 0 0
 
       .left
         +span(26%)

@@ -1,4 +1,4 @@
-Graph = ($scope, $window, dataservice, ngToast, $filter) ->
+Graph = ($rootScope, $scope, $window, dataservice, ngToast, $filter) ->
 
   updateDownloadLink = ->
     $scope.downloadLink =
@@ -8,6 +8,10 @@ Graph = ($scope, $window, dataservice, ngToast, $filter) ->
 
 
   $scope.$on 'country-toggled', (event, args) ->
+    updateDownloadLink()
+
+  $rootScope.$on '$translateChangeEnd', (event, eventData) ->
+    console.log eventData
     updateDownloadLink()
 
 
@@ -125,6 +129,7 @@ Graph = ($scope, $window, dataservice, ngToast, $filter) ->
   return
 
 Graph.$inject = [
+  '$rootScope'
   '$scope'
   '$window'
   'dataservice'

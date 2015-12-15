@@ -5,7 +5,7 @@ section.static
     width: 100%
 
   a.close
-    +image-data-with-dimensions("close-big.png")
+    +retina-sprite($sprite-closebig-group)
 
   h3
     +break
@@ -51,7 +51,7 @@ section.static
       clear: both
 
 
-body.contributors, body.institutional, body.about, body.contact
+body.contributors, body.institutional, body.credits, body.about, body.contact
   #content
     background: $grey_light
 
@@ -77,7 +77,7 @@ body.contributors
         line-height: 25px
         margin-bottom: 10px
 
-body.institutional
+body.credits, body.institutional
   ul
     padding: 0
     list-style: none

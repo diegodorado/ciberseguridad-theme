@@ -1,39 +1,48 @@
 //HiFi logos
-$langs: es en
-@each $lang in  $langs
-  html[lang="#{$lang}"]
-    @each $breakpoint in $breakpoints
-      $res: ($breakpoint / 1px)
-      +breakpoint($breakpoint)
-        .partners
-          .oea
-            +hd_logo("logos/#{$lang}-oea-#{$res}-2x.png")
-          .bid
-            +hd_logo("logos/#{$lang}-bid-#{$res}-2x.png")
 
+@each $retina-group in $retina-groups
+  $sprite-name: nth($retina-group, 1)
+  $index: str-index($sprite-name, 'logo')
+  @if type-of($index) == number
+    $lang: quote(str-slice($sprite-name, 6, 7))
+    $partner: quote(str-slice($sprite-name, 9, 11))
+    @each $breakpoint in $breakpoints
+      $res: inspect(($breakpoint / 1px))
+      $index: str-index($sprite-name, $res)
+      @if type-of($index) == number
+        html[lang="#{$lang}"]
+          +breakpoint($breakpoint)
+            .partners
+              .#{$partner}
+                +retina-sprite($retina-group)
+                //$normal-sprite: nth($retina-group, 2)
+                //$retina-sprite: nth($retina-group, 3)
+                //+sprite($normal-sprite)
+                //+sprite-image($retina-sprite)
+                //+sprite-background-size($normal-sprite)
+
+
+//flags
+@each $retina-group in $retina-groups
+  $sprite-name: nth($retina-group, 1)
+  $index: str-index($sprite-name, 'flag')
+  @if type-of($index) == number
+    .#{$sprite-name}
+      +retina-sprite($retina-group)
 
 
 #header
-  height: 161px
+  height: 171px
   background: $white
   text-transform: uppercase
   border-bottom: 1px solid $grey_light
   header
     position: relative
-    padding: 85px 19px 15px
+    padding: 96px 19px 15px
   a, a:hover
     cursor: pointer
     text-decoration: none
 
-  //HiFi logos
-  //@each $breakpoint in $breakpoints
-  //  $res: ($breakpoint / 1px)
-  //  +breakpoint($breakpoint)
-  //    .partners
-  //      .oea
-  //        +hd_logo("logos/oea-#{$res}-2x.png")
-  //      .bid
-  //        +hd_logo("logos/bid-#{$res}-2x.png")
 
   .isologo
     span
@@ -47,7 +56,7 @@ $langs: es en
     position: absolute
     z-index: 1000
     right: 0
-    top: 8px
+    top: 25px
     > a
       border-left: 1px solid $grey_light
       display: block
@@ -56,7 +65,15 @@ $langs: es en
       color: $grey_mid
       font-size: 15px
       letter-spacing: 0.6px
-      background: inline-image("caret.png") no-repeat 37px 33px
+      position: relative
+      &::after
+        position: absolute
+        top: 10px
+        right: 0
+        content: " "
+        display: block
+        +retina-sprite($sprite-caret-group)
+
     .sm
       margin-left: 19px
     .md
@@ -98,11 +115,15 @@ $langs: es en
 
   .partners
     position: absolute
-    top: 11px
+    top: 9px
     left: 19px
     a
-      display: inline-block
+      // have no link yet...
+      cursor: default
+      display: block
+      float: left
     .bid
+      margin-top: 20px
       margin-left: 5px
 
   +breakpoint($medium)
@@ -121,11 +142,11 @@ $langs: es en
       strong
         font-size: 34px
     .lang
-      top: 62px
+      top: 54px
       > a
         padding: 9px 0 18px
         width: 77px
-        background-position: 33px 34px
+
       .sm
         margin-left: 15px
       ul a
@@ -139,15 +160,16 @@ $langs: es en
       left: 0
       position: relative
       float: left
-      margin: 32px 0 0 35px
+      margin: 4px 0 0 86px
       .bid
         margin-left: 8px
 
   +breakpoint($large)
     header
-      padding: 29px 0 19px 37px
+      padding: 0 0 0 37px
     .isologo
       width: 400px
+      margin-top: 29px
       strong
         letter-spacing: 0.2px
         line-height: 41px
@@ -156,13 +178,12 @@ $langs: es en
       left: 0
       position: relative
       float: left
-      margin: 24px 0 0 25px
+      margin: 53px 0 0 25px
 
       > a
         border: none
         font-size: 13px
         letter-spacing: 1px
-        background-position: 66px 14px
       .sm
         display: none
       .md
@@ -170,15 +191,13 @@ $langs: es en
 
     .partners
       float: right
-      margin: 4px 0 0 0
+      margin: 14px 0 0 0
       .bid
         margin-left: 10px
 
   +breakpoint($wide)
-    header
-      padding: 29px 0 18px 36px
     .lang
-      margin: 24px 0 0 300px
+      margin: 53px 0 0 300px
       ul
         top: 38px
         right: -5px

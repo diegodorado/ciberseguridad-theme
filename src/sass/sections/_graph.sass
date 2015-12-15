@@ -61,10 +61,7 @@ section.graph
         font-weight: normal
         text-align: right
       &::after
-        //border-bottom: 1px solid $grey_light
         padding-top: 4px
-      &:last-child::after
-        //border: none
 
   .country-ml
     cursor: pointer
@@ -75,7 +72,8 @@ section.graph
     .last-selected  span
       border-left: 5px solid $grey_mid
       padding-left: 25px
-      background-position: 5px center
+      &::after
+        left: 5px
 
   .shareLinks
     height: 154px
@@ -105,9 +103,17 @@ section.graph
         padding: 0 21px
 
       .download i
-        background: inline-image("download.png") no-repeat center center
+        &::after
+          margin: 5px 0 0 13px
+          content: " "
+          display: inline-block
+          +retina-sprite($sprite-download-group)
       .share i
-        background: inline-image("share.png") no-repeat center center
+        &::after
+          margin: 5px 0 0 13px
+          content: " "
+          display: inline-block
+          +retina-sprite($sprite-share-group)
 
   header.countries
     .country-header
@@ -122,12 +128,12 @@ section.graph
         display: inline-block
         position: relative
         font-style: normal
-        +image-data-with-dimensions("arrow-down.png")
+        +retina-sprite($sprite-arrow-down-group)
       .select-country
         +top-triangle($grey_mid, 14px, 118px)
         width: 250px
-        top: image-height("arrow-down.png") + 14px/2
-        left: -(250px - image-width("arrow-down.png"))/2
+        top: 32px
+        left: -112px
 
 
       span.hint

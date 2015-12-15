@@ -5,7 +5,7 @@
   <span translate>boreceror.solupta</span>
 </p>
 
-<button class="select" click-out="countrySelectClickout()">
+<div class="select" click-out="countrySelectClickout()">
   <span ng-click="toggleCountrySelect()" ng-show="!$stateParams.countries" translate>selecciona.un.pais</span>
   <span ng-click="toggleCountrySelect()" ng-show="$stateParams.countries" translate>compara.otro.pais</span>
   <div ng-show="countrySelectOpened" class="select-country">
@@ -22,8 +22,8 @@
         <span ng-click="clickCountry(country.code)">{{country.name}}</span>
       </li>
     </ul>
+  </div>
 </div>
-</button>
 
 <div class="info empty" ng-if="!$stateParams.last_selected">
   <h3 translate>pais.seleccionado</h3>

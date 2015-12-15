@@ -4,11 +4,20 @@
     font-size: 12px
     letter-spacing: 0.3px
     display: inline-block
-    background: $black inline-image("notice.png") left 10px center no-repeat
+    background: $black
     color: $white
     padding: 10px 10px 10px 30px
     text-transform: uppercase
     margin-bottom: 8px
+    position: relative
+    &::after
+      position: absolute
+      top: 10px
+      left: 8px
+      content: " "
+      display: block
+      +retina-sprite($sprite-notice-group)
+
 
 .ng-toast--animate-fade .ng-enter, .ng-toast--animate-fade .ng-leave
   transition: opacity 0.8s ease

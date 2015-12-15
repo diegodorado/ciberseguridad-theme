@@ -21,13 +21,12 @@ module.exports = function() {
         compassConfig: {
             project: path.join(__dirname, './'),
             import_path: './bower_components',
-            relative: true,
             css: build + 'assets/css',
             sass: src + 'sass',
             image: build + 'assets/images',
             font: build + 'assets/fonts',
         },
-        css: temp + '/**/*.css',
+        css: build + 'assets/css/app.css',
         fonts: [
             src + 'fonts/**/*.*'
         ],
@@ -83,7 +82,14 @@ module.exports = function() {
             // Generate SCSS variables/mixins for both spritesheets
             cssName: '_sprites.scss',
             cssVarMap: function (sprite) {
-              sprite.name = 'flag-' + sprite.name;
+              if(sprite.source_image.indexOf('sprites/flag/')>0){
+                sprite.name = 'flag-' + sprite.name;
+              }else if(sprite.source_image.indexOf('sprites/logo/')>0){
+                sprite.name = 'logo-' + sprite.name;                
+              }else{
+                sprite.name = 'sprite-' + sprite.name;
+              }
+
             }
           },
           imgDest: src + 'images/',

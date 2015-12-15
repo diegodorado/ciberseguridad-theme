@@ -25,7 +25,7 @@ gulp.task('compass', function() {
     return gulp.src(config.sass)
         .pipe($.plumber())
         .pipe($.compass(config.compassConfig))
-        .pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}));
+        .pipe($.autoprefixer({browsers: ['last 2 version', '> 5%']}))
         //.pipe(gulp.dest(config.temp));
 });
 
@@ -73,7 +73,7 @@ gulp.task('images', function() {
   log('Copying and compressing images');
   return gulp
     .src(config.images)
-    .pipe($.imagemin({optimizationLevel:4}))
+    //.pipe($.imagemin({optimizationLevel:4}))
     .pipe(gulp.dest(config.build + 'assets/images'))
     ;
 });
@@ -96,9 +96,16 @@ gulp.task('clean-tmp', function(done) {
     clean(files, done);
 });
 
+
+gulp.task('del-css', function(done) {
+    var files = [].concat(
+        config.build  + '**/*.css'
+    );
+    clean(files, done);
+});
+
 gulp.task('inject', gulp.series(
     'clean-tmp',
-    'wiredep',
     gulp.parallel('coffee', 'templatecache', 'compass'),
     function() {
         log('Inject coffee, templateCache, and sass (all compiled) into the html');

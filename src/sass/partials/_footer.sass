@@ -16,7 +16,12 @@ body
   width: 50px
   height: 50px
   border-radius: 25px
-  background: $grey_lighter inline-image("footer-caret.png") no-repeat 50% 50%
+  background: $grey_lighter
+  &::after
+    margin-top: 11px
+    content: " "
+    display: inline-block
+    +retina-sprite($sprite-footer-caret-group)
 
 
 footer
@@ -47,24 +52,15 @@ footer
     /*solves inline whitespace gap
     a
       margin-bottom: 29px
-      display: inline-block
+      display: block
       height: 10px
-      border-left: 1px solid $grey_mid
       padding: 0px 10px 1px 11px
       font-size: 12px
-      line-height: 12px
+      line-height: 11px
       color: $grey_dark
       &:hover
         color: $grey_dark
-      &:nth-child(1)
-        border-left: none
-      &:nth-child(3)
-        margin-left: 7px
-        border-right: 1px solid $grey_mid
-      &:nth-child(4)
-        display: block
-        border: none
-        margin: 0
+
 
   .copy
     color: $grey_dark
@@ -76,11 +72,13 @@ footer
       margin: 26px 35px 0
       padding-bottom: 19px
       a
+        font-size: 12px
         margin-bottom: 0
-        &:nth-child(3)
+        display: inline-block
+        border-left: 1px solid $grey_mid
+        &:first-child
           margin-left: 0
-        &:nth-child(4)
-          display: inline-block
+          border-left: none
 
   +breakpoint($large)
     +container
@@ -94,8 +92,6 @@ footer
       padding: 0 0px 16px 182px
       a
         padding: 0px 12px 1px 12px
-        &:nth-child(4)
-          padding-right: 0
 
     .copy
       text-align: right

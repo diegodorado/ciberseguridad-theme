@@ -7,7 +7,7 @@ getStates = ->
       state: 'app.country'
       config:
         bodyClass: 'country'
-        url: '/country/:code'
+        url: 'country/:code'
         views:
           "content@":
             templateUrl: 'app/country/country.html'

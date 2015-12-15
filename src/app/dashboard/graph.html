@@ -72,7 +72,7 @@
       <a class="close" ng-click="clickCountry(country.code)"></a>
       <b class="flag-{{country.code}}"></b>
       <span class="country-name">{{country.name}}</span>
-      <a  ui-sref="modal.country-details({code: country.code})" class="info-link"></a>
+      <a  ui-sref="app.country({code: country.code})" class="info-link"></a>
     </div>
 
     <div ng-show="showGhostCountry()" class="country-header ghost" ng-click="toggleCountrySelect($event)" drag-and-drop drop="handleDrop" click-out="countrySelectClickout()">
