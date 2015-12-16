@@ -77,7 +77,9 @@ body.contributors
         line-height: 25px
         margin-bottom: 10px
 
-body.credits, body.institutional
+body.credits
+  p.lead
+    padding: 27px 0 8px
   ul
     padding: 0
     list-style: none
@@ -86,21 +88,12 @@ body.credits, body.institutional
       font-size: 18px
       line-height: 25px
   .center
-    &:nth-child(2),&:nth-child(3),&:nth-child(4)
-      border-bottom: 1px solid $grey_midder
-      margin-bottom: 28px
+    border-bottom: 1px solid $grey_midder
+    padding-bottom: 28px
+    margin-bottom: 28px
+    &:last-child
+      border-bottom: none
 
-  sub
-    font-size: 13px
-    color: $grey_mid
-    font-weight: normal
-
-  cite
-    display: block
-    font-style: normal
-    font-size: 11px
-    color: $grey_mid
-    line-height: 23px
 
 section.static
   +container($small)

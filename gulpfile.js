@@ -256,6 +256,12 @@ gulp.task('rsync', gulp.series('optimize', function() {
 }));
 
 
+gulp.task('rsync-prod', gulp.series('optimize', function() {
+    return gulp.src(config.build)
+        .pipe($.rsync(config.rsyncOptionsProd));
+}));
+
+
 // rsync -auv deploy@staging.cybersecurityinlac.com:/home/deploy/staging/current/themes/ciberseguridad/pages/* tmp/
 // cp -R tmp/* src/pages/
 // rm -rf tmp

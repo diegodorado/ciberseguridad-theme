@@ -63,6 +63,18 @@ module.exports = function() {
             exclude: ['.DS_Store'],
         },
 
+        rsyncOptionsProd: {
+            destination: '/home/deploy/production/themes/ciberseguridad',
+            root: build,
+            hostname: 'observatoriociberseguridad.com',
+            username: 'deploy',
+            incremental: true,
+            progress: true,
+            relative: true,
+            recursive: true,
+            clean: true,
+            exclude: ['.DS_Store'],
+        },
 
 
         sass: src + 'sass/app.sass',
@@ -85,7 +97,7 @@ module.exports = function() {
               if(sprite.source_image.indexOf('sprites/flag/')>0){
                 sprite.name = 'flag-' + sprite.name;
               }else if(sprite.source_image.indexOf('sprites/logo/')>0){
-                sprite.name = 'logo-' + sprite.name;                
+                sprite.name = 'logo-' + sprite.name;
               }else{
                 sprite.name = 'sprite-' + sprite.name;
               }
