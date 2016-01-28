@@ -11,7 +11,6 @@ Graph = ($rootScope, $scope, $window, dataservice, ngToast, $filter) ->
     updateDownloadLink()
 
   $rootScope.$on '$translateChangeEnd', (event, eventData) ->
-    console.log eventData
     updateDownloadLink()
 
 

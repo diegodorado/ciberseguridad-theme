@@ -262,9 +262,8 @@ gulp.task('rsync-prod', gulp.series('optimize', function() {
 }));
 
 
-// rsync -auv deploy@staging.cybersecurityinlac.com:/home/deploy/staging/current/themes/ciberseguridad/pages/* tmp/
-// cp -R tmp/* src/pages/
-// rm -rf tmp
+// rsync -auv deploy@observatoriociberseguridad.com:/home/deploy/production/themes/ciberseguridad/pages/* src/pages/
+// rsync -auv deploy@staging.cybersecurityinlac.com:/home/deploy/staging/current/themes/ciberseguridad/pages/* src/pages/
 
 
 //ogr2ogr -f GeoJSON   -where "ADM0_A3 IN ('GBR', 'IRL')" subunits.json   ne_10m_admin_0_map_subunits.shp

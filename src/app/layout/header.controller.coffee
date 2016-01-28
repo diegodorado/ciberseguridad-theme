@@ -1,6 +1,16 @@
 ### @ngInject ###
-Header = ($window, $scope , $translate) ->
+Header = ($rootScope, $window, $scope , $translate) ->
   $scope.langOpened = false
+
+  updateLinks = ->
+    if $scope.locale is 'en'
+      $scope.oeaLink = 'http://www.oas.org/en/'
+      $scope.bidLink = 'http://www.iadb.org/en/inter-american-development-bank,2837.html'
+    else
+      $scope.oeaLink = 'http://www.oas.org/es/'
+      $scope.bidLink = 'http://www.iadb.org/es/banco-interamericano-de-desarrollo,2837.html'
+
+
 
   $scope.changeLocale = (locale) ->
     $translate.use(locale)
@@ -22,10 +32,18 @@ Header = ($window, $scope , $translate) ->
       # so that it can refresh the UI
       $scope.$apply()
 
+  $rootScope.$on '$translateChangeEnd', (event, eventData) ->
+    updateLinks()
+
+  updateLinks()
+
+
+
   return
 
 angular.module('app.layout').controller 'Header', Header
 Header.$inject = [
+  '$rootScope'
   '$window'
   '$scope'
   '$translate'

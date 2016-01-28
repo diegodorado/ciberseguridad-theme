@@ -1,9 +1,6 @@
 section.static
   position: relative
 
-  img
-    width: 100%
-
   a.close
     +retina-sprite($sprite-closebig-group)
 
@@ -15,19 +12,16 @@ section.static
     padding: 58px 0 2px
     font-weight: normal
     color: $black
-  p
-    margin: 0
-    font-size: 17px
-    line-height: 22px
-    padding: 0 0 18px
-    color: $black
-    &.lead
-      color: $grey_dark
-      font-size: 20px
-      line-height: 30px
-      padding: 5px 0 18px
 
   h4
+    color: $grey_dark
+    font-weight: normal
+    font-size: 20px
+    line-height: 30px
+    padding: 27px 0 8px
+    margin: 0
+
+  h5
     color: $black
     padding: 16px 0px 0px
     font-size: 20px
@@ -35,64 +29,36 @@ section.static
     margin: 0
     font-weight: bold
 
-  button
-    float: right
+  p
+    margin: 0
+    font-size: 17px
+    line-height: 22px
+    padding: 0 0 18px
+    color: $black
+    text-align: justify
+
+  ul
+    margin: 0
+    padding: 10px 17px
+    li
+      font-size: 18px
+      line-height: 25px
+      margin-bottom: 10px
+
+  blockquote
+    padding: 16px 0px 0px
+    margin: 0
+    text-transform: uppercase
+    letter-spacing: 0.6px
     font-size: 18px
-    border: 2px solid $grey_light
-    background: none
-    width: 141px
-    height: 40px
-    color: $grey_dark
 
-  .center
-    &::after
-      content: " "
-      display: block
-      clear: both
-
+  hr
+    border: none
+    border-bottom: 1px solid $grey_midder
 
 body.contributors, body.institutional, body.credits, body.about, body.contact
   #content
     background: $grey_light
-
-
-body.contributors
-  section.static
-    .left, .right
-      margin-bottom: 60px
-
-    p.lead
-      padding-bottom: 78px
-
-    h4
-      font-weight: normal
-      text-transform: uppercase
-      letter-spacing: 0.6px
-      font-size: 18px
-    ul
-      margin: 0
-      padding: 10px 17px
-      li
-        font-size: 18px
-        line-height: 25px
-        margin-bottom: 10px
-
-body.credits
-  p.lead
-    padding: 27px 0 8px
-  ul
-    padding: 0
-    list-style: none
-    margin: 2px 0 27px
-    li
-      font-size: 18px
-      line-height: 25px
-  .center
-    border-bottom: 1px solid $grey_midder
-    padding-bottom: 28px
-    margin-bottom: 28px
-    &:last-child
-      border-bottom: none
 
 
 section.static
@@ -102,6 +68,16 @@ section.static
     right: 20px
 
   padding: 30px 0 60px
+
+  table
+    width: 100%
+    td
+      vertical-align: top
+      padding-bottom: 60px
+      display: block
+      width: 100%
+
+
   .center
     margin: 0 20px
   +breakpoint($medium)
@@ -122,14 +98,13 @@ section.static
       +break
       margin: 0 70px
 
-    p
-      width: 730px
+    table
+      td
+        display: table-cell
+        width: 50%
 
-    .left, .right
-      padding: 0px
-      float: left
-      width: 330px
-      margin-right: 35px
 
   +breakpoint($wide)
     +container($wide 9)
+    table
+      width: 75%
