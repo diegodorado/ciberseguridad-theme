@@ -123,7 +123,13 @@
     .bid
       margin-top: 20px
       margin-left: 5px
-
+      // hack to increase a bit logo size
+      transform: translateZ(0) scale(1.1, 1.1)
+      -webkit-filter: blur(0px)
+      -moz-filter: blur(0px)
+      -ms-filter: blur(0px)
+      filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='0')
+      
   +breakpoint($medium)
     height: 123px
 
